@@ -87,7 +87,6 @@ class AppText {
       "2024 © Copyright Uinno LLC. All Rights Reserved";
 
   // WhyChooseUsSection
-
   static const whyChooseAs = "WHY CHOOSE WAKEUP MONSTERS AS";
   static const yourDevPatner = "YOUR  DEVELOPMENT  PARTNER";
   static const whyChooseCard1 =
@@ -111,11 +110,16 @@ class AppText {
       "Once your email gets to our inbox, within just 8 business hours our representative will contact you back to clear out all the project requirements and cooperation flow. We can sign an NDA upon request, however, you can be sure that your ideas are safe with us.";
   static const String simplyShareYourProject =
       "Simply share your project details with us, like scope, timeframes, or your business challenges, and we’ll cover all the rest. Let’s create a custom software product together to make your business prosper!";
-
   static const String bookACall = "BOOK A CALL";
   static const String contactEmail = 'contact@wakeupmonster.in';
-  static const String coFounderQuote= 'The smart fairy to make your business dreams come true.';
-  static const String founderQuote= 'The perfectionist who makes sure each detail is counted.';
-  static const String  moreContact= 'More Contact';
+  static const String coFounderQuote =
+      'The smart fairy to make your business dreams come true.';
+  static const String founderQuote =
+      'The perfectionist who makes sure each detail is counted.';
+  static const String moreContact = 'More Contact';
 
+  // About us
+  static const aboutCompany =
+      "Wakeup Monsters is a product development agency compiled of engineers and technology experts with an ownership mindset who are solely focused on solving business challenges via creating future-ready apps, websites, and digital solutions.";
+  static const aboutcontacts = "+380 (99) 455 99 91 \ncontact@uinno.io \nhr@uinno.io";
 }

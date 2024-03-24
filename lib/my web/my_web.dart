@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wakeup_web/features/about%20us/screen/about_us.dart';
 import 'package:wakeup_web/features/client%20review/screen/client_review_section.dart';
 import 'package:wakeup_web/features/contactus%20form/screen/contact_us_setion.dart';
 import 'package:wakeup_web/features/home/screens/home_screen.dart';
@@ -48,11 +49,12 @@ class _MyWebState extends State<MyWeb> {
         controller: _scrollController,
         child: const Column(
           children: [
-            // HomePage(),
-            // OurServices(),
-            // ClientReviewSection(),
-            // WhyChooseUsSection(),
+            HomePage(),
+            OurServices(),
+            ClientReviewSection(),
+            WhyChooseUsSection(),
             ContactUsSection(),
+            AboutUsSection()
           ],
         ),
       ),

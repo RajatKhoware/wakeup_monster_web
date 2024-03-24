@@ -41,6 +41,7 @@ class WeHelpSection extends StatelessWidget {
                 height: height * 0.3,
                 //    color: AppColors.brown,
                 child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   //  shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemCount: AppList.wehelp.length,
