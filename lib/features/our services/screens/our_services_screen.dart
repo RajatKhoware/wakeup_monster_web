@@ -74,7 +74,7 @@ class OurServices extends StatelessWidget {
             ),
           ),
           SizedBox(height: height * 0.2),
-         const WeHelpSection(),
+          const WeHelpSection(),
         ],
       ),
     );

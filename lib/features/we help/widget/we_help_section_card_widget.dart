@@ -42,20 +42,22 @@ class BuildWeHelpSections extends StatelessWidget {
             ),
           ),
           SizedBox(height: height * 0.02),
-          MyTextPoppines(
+          SelectablePoppines(
             text: heading,
             fontSize: width * 0.015,
+            height: 0,
             fontWeight: FontWeight.w600,
           ),
           SizedBox(height: height * 0.003),
           SizedBox(
             width: width * 0.14,
-            child: MyTextPoppines(
+            child: SelectablePoppines(
               text: subHeading,
               fontSize: width * 0.008,
               color: AppColors.black.withOpacity(0.6),
               fontWeight: FontWeight.w500,
               maxLines: 3,
+              height: 1.4,
             ),
           ),
           SizedBox(height: height * 0.018),

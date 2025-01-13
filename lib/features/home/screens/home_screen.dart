@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:wakeup_web/my%20web/controller/my_web_controller.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
+import 'package:wakeup_web/utils/res/comman/app_list.dart';
 import 'package:wakeup_web/utils/res/comman/app_text.dart';
 
 import '../../../utils/res/helper/my_custom_painter.dart';
@@ -26,7 +31,7 @@ class HomePage extends StatelessWidget {
               children: [
                 SizedBox(height: height * 0.2),
                 // Text
-                MyTextPoppines(
+                SelectablePoppines(
                   text: AppText.innovateWithUs,
                   color: AppColors.orange,
                   fontWeight: FontWeight.w600,
@@ -38,7 +43,7 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: height * 0.015),
                 SizedBox(
                   width: width * 0.3,
-                  child: MyTextPoppines(
+                  child: SelectablePoppines(
                     text: AppText.homesubHeadline,
                     color: AppColors.white,
                     fontWeight: FontWeight.normal,
@@ -71,7 +76,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class HomeQuate extends StatelessWidget {
+class HomeQuate extends StatefulWidget {
   const HomeQuate({
     super.key,
     required this.width,
@@ -82,41 +87,134 @@ class HomeQuate extends StatelessWidget {
   final double height;
 
   @override
+  State<HomeQuate> createState() => _HomeQuateState();
+}
+
+class _HomeQuateState extends State<HomeQuate> {
+  late PageController _pageController;
+  late Timer _timer;
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+    _startTimer();
+  }
+
+  void _startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 6), (timer) {
+      if (_currentPage < AppList.appTestimonial.length - 1) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+      _pageController.animateToPage(
+        _currentPage,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    _timer.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width * 0.7,
-      color: AppColors.black10,
-      padding: EdgeInsets.symmetric(
-        vertical: height * 0.08,
-        horizontal: width * 0.08,
-      ),
-      child: Column(
-        children: [
-          MyTextPoppines(
-            text: AppText.businessTestimonial,
-            fontSize: width * 0.012,
-            textAlign: TextAlign.center,
-            fontWeight: FontWeight.w600,
-            color: AppColors.white,
-            maxLines: 3,
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          width: widget.width * 0.7,
+          color: AppColors.black10,
+          padding: EdgeInsets.symmetric(
+            vertical: widget.height * 0.08,
+            horizontal: widget.width * 0.08,
           ),
-          SizedBox(height: height * 0.03),
-          MyTextPoppines(
-            text: "Matthew Cook",
-            fontSize: width * 0.008,
-            textAlign: TextAlign.center,
-            fontWeight: FontWeight.w600,
-            color: AppColors.lightGreen,
+          child: SizedBox(
+            height: widget.height * 0.3,
+            child: PageView.builder(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentPage = index;
+                });
+              },
+              itemCount: AppList.appTestimonial.length,
+              itemBuilder: (context, index) {
+                final testimonial = AppList.appTestimonial[index];
+                return Column(
+                  children: [
+                    SizedBox(height: widget.height * 0.08),
+                    MyTextPoppines(
+                      text: testimonial.quote,
+                      fontSize: widget.width * 0.012,
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.white,
+                      maxLines: 3,
+                    ),
+                    SizedBox(height: widget.height * 0.03),
+                    MyTextPoppines(
+                      text: testimonial.name,
+                      fontSize: widget.width * 0.008,
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.lightGreen,
+                    ),
+                    MyTextPoppines(
+                      text: testimonial.heading,
+                      fontSize: widget.width * 0.008,
+                      textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.lightGreen,
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
-          MyTextPoppines(
-            text: "Founder @myblock.app",
-            fontSize: width * 0.008,
-            textAlign: TextAlign.center,
-            fontWeight: FontWeight.w600,
-            color: AppColors.lightGreen,
+        ),
+        // Left Navigation Button
+        Positioned(
+          left: widget.width * 0.04,
+          child: IconButton(
+            onPressed: () {
+              _pageController.previousPage(
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+              );
+            },
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: AppColors.lightGreen,
+              size: widget.width * 0.02,
+            ),
           ),
-        ],
-      ),
+        ),
+        // Right Navigation Button
+        Positioned(
+          right: widget.width * 0.04,
+          child: IconButton(
+            onPressed: () {
+              _pageController.nextPage(
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+              );
+            },
+            icon: Icon(
+              Icons.arrow_forward_ios,
+              color: AppColors.lightGreen,
+              size: widget.width * 0.02,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -166,6 +264,8 @@ class LetsTalk extends StatefulWidget {
 
 class _LetsTalkState extends State<LetsTalk> {
   bool isHover = false;
+  final MyWebController controller = Get.find<MyWebController>();
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
@@ -179,7 +279,7 @@ class _LetsTalkState extends State<LetsTalk> {
               value ? isHover = true : isHover = false;
             });
           },
-          onTap: () {},
+          onTap: () => controller.scrollToBottom(),
           child: Column(
             children: [
               MyTextPoppines(
@@ -189,9 +289,7 @@ class _LetsTalkState extends State<LetsTalk> {
                 fontSize: width * 0.009,
                 textAlign: TextAlign.center,
               ),
-              // SizedBox(height: height * 0.002),
               Visibility(
-                //  visible: !isHover,
                 child: Container(
                   width: width * 0.092,
                   height: height * 0.0018,

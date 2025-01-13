@@ -88,6 +88,32 @@ class AppList {
       "SOCIAL RESPONSIBILITY",
     ],
   ];
+
+  static List<AppTestimonial> appTestimonial = [
+    AppTestimonial(
+      "John Doe",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
+      "CEO",
+    ),
+    AppTestimonial(
+      "Jane Smith",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
+      "CTO",
+    ),
+    AppTestimonial(
+      "Mark Johnson",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
+      "CFO",
+    ),
+    AppTestimonial(
+      "Sara Davis",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
+      "COO",
+    ),
+    AppTestimonial(
+      "Michael Brown",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",      
+      "CIO",), ];
 }
 
 class Service {
@@ -100,4 +126,13 @@ class Service {
     this.subHeading,
     this.isHovered,
   );
+}
+
+
+class AppTestimonial {
+  final String name;
+  final String quote;
+  final String heading;
+
+  AppTestimonial(this.name, this.quote, this.heading);
 }

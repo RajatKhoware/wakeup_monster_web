@@ -76,27 +76,27 @@ class ServicesCard extends StatelessWidget {
             child: MyTextPoppines(
               text: subHeading,
               fontSize: width * 0.006,
-              color: !isHovered ? Colors.grey.shade400 : AppColors.lightGreen,
+              color: Colors.grey.shade400,
               fontWeight: FontWeight.w700,
               height: 1.5,
-              maxLines: 3,
+              maxLines: !isHovered ? 3 : 10,
             ),
           ),
           SizedBox(height: height * 0.02),
-          Visibility(
-            visible: isHovered,
-            child: Container(
-              width: width,
-              height: width * 0.14,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(width * 0.005),
-                image: const DecorationImage(
-                  image: AssetImage(AppImg.team_01),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          )
+          // Visibility(
+          //   visible: isHovered,
+          //   child: Container(
+          //     width: width,
+          //     height: width * 0.14,
+          //     decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(width * 0.005),
+          //       image: const DecorationImage(
+          //         image: AssetImage(AppImg.team_01),
+          //         fit: BoxFit.cover,
+          //       ),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );
