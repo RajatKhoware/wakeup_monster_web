@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:wakeup_web/features/contactus%20form/widget/my_drop_down.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
 import 'package:wakeup_web/utils/res/comman/my_textfield.dart';
 
@@ -31,16 +32,17 @@ class ContactUsSection extends StatelessWidget {
             ),
 
             ContactUsBanner(width: width, height: height),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Contact us
-                const ContactUsContainer(),
-                SizedBox(width: width * 0.012),
-                // What's Next
-                const ContactUsInfoContainer(),
-              ],
-            ),
+            const ContactUsContainer(),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //    // Contact us
+            //     ContactUsContainer(),
+            //     SizedBox(width: width * 0.012),
+            //     // What's Next
+            //     const ContactUsInfoContainer(),
+            //   ],
+            // ),
             SizedBox(height: height * 0.2),
           ],
         ),
@@ -255,14 +257,27 @@ class ContactUsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+
     TextEditingController nameController = TextEditingController();
     TextEditingController emailController = TextEditingController();
     TextEditingController phoneController = TextEditingController();
+    TextEditingController websiteController = TextEditingController();
+    TextEditingController designationController = TextEditingController();
+    TextEditingController addressController = TextEditingController();
+    TextEditingController budgetController = TextEditingController();
     TextEditingController messageController = TextEditingController();
 
+    String selectedSource = "How did you get to know about us?";
+    List<String> sourceOptions = [
+      "How did you get to know about us?",
+      "Google",
+      "Social Media",
+      "Referral"
+    ];
+
     return Container(
-      width: width * 0.34,
-      height: height * 0.8,
+      width: width * 0.7,
+      // height: height * 0.9,
       color: AppColors.black10,
       padding: EdgeInsets.symmetric(
         horizontal: width * 0.02,
@@ -271,32 +286,16 @@ class ContactUsContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: height * 0.02),
-          Row(
-            children: [
-              Transform.rotate(
-                angle: 45 * 3.141592653589793 / 180,
-                child: Container(
-                  width: 8,
-                  height: 8,
-                  color: AppColors.orange,
-                  margin: const EdgeInsets.only(top: 2),
-                ),
-              ),
-              SizedBox(width: width * 0.01),
-              MyTextPoppines(
-                text: AppText.contactUs,
-                fontSize: width * 0.011,
-                color: AppColors.white,
-                fontWeight: FontWeight.w600,
-                height: 1,
-              ),
-            ],
-          ),
-          SizedBox(height: height * 0.04),
+          // SizedBox(height: height * 0.02),
+          // MyTextPoppines(
+          //   text: AppText.contactUs,
+          //   fontSize: width * 0.011,
+          //   color: AppColors.white,
+          //   fontWeight: FontWeight.w600,
+          // ),
           SizedBox(height: height * 0.02),
           MyTextPoppines(
-            text: AppText.simplyShareYourProject,
+            text: AppText.onceYourEmailGetsToOurInbox,
             fontSize: width * 0.0085,
             color: AppColors.white,
             fontWeight: FontWeight.w300,
@@ -309,92 +308,93 @@ class ContactUsContainer extends StatelessWidget {
               Expanded(
                 child: MyTextFeild(
                   controller: nameController,
-                  lableText: "Name",
+                  lableText: "Full Name",
                 ),
               ),
               SizedBox(width: width * 0.01),
               Expanded(
                 child: MyTextFeild(
                   controller: emailController,
-                  lableText: "Email",
+                  lableText: "Email Address",
                 ),
               ),
             ],
           ),
           SizedBox(height: height * 0.02),
-          MyTextFeild(
-            controller: phoneController,
-            lableText: "Phone",
-            isPhoneField: true,
+          Row(
+            children: [
+              Expanded(
+                child: MyTextFeild(
+                  controller: phoneController,
+                  lableText: "Mobile Number",
+                  isPhoneField: true,
+                ),
+              ),
+              SizedBox(width: width * 0.01),
+              Expanded(
+                child: MyTextFeild(
+                  controller: websiteController,
+                  lableText: "Website",
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: height * 0.02),
+          Row(
+            children: [
+              Expanded(
+                child: MyDropdownField(
+                  labelText: "How did you get to know about us?",
+                  items: const [
+                    "How did you get to know about us?",
+                    "Google",
+                    "Social Media",
+                    "Referral"
+                  ],
+                  initialValue: "How did you get to know about us?",
+                  onChanged: (value) {
+                    print("Selected: $value");
+                  },
+                ),
+              ),
+              SizedBox(width: width * 0.01),
+              Expanded(
+                child: MyTextFeild(
+                  controller: designationController,
+                  lableText: "Designation/Profile",
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: height * 0.02),
+          Row(
+            children: [
+              Expanded(
+                child: MyTextFeild(
+                  controller: addressController,
+                  lableText: "Address",
+                ),
+              ),
+              SizedBox(width: width * 0.01),
+              Expanded(
+                child: MyTextFeild(
+                  controller: budgetController,
+                  lableText: "Budget",
+                ),
+              ),
+            ],
           ),
           SizedBox(height: height * 0.02),
           MyTextFeild(
             controller: messageController,
-            lableText: "Message",
+            lableText: "Your Vision for Your Brand",
             maxlines: 5,
-          ),
-          SizedBox(height: height * 0.04),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Checkbox(
-                    activeColor: AppColors.orange,
-                    value: true,
-                    onChanged: (val) {},
-                  ),
-                  SizedBox(width: width * 0.005),
-                  MyTextPoppines(
-                    text: "Get an NDA",
-                    fontSize: width * 0.008,
-                    color: AppColors.white,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ],
-              ),
-              TextButton.icon(
-                onPressed: () {},
-                icon: Icon(
-                  Iconsax.paperclip_2_copy,
-                  size: width * 0.01,
-                  color: AppColors.orange,
-                ),
-                label: MyTextPoppines(
-                  text: "Attach Files",
-                  fontSize: width * 0.009,
-                  color: AppColors.orange,
-                  fontWeight: FontWeight.w500,
-                ),
-              )
-            ],
-          ),
-          SizedBox(height: height * 0.01),
-          Row(
-            children: [
-              Checkbox(
-                activeColor: AppColors.orange,
-                value: true,
-                onChanged: (val) {},
-              ),
-              SizedBox(width: width * 0.008),
-              SizedBox(
-                width: width * 0.27,
-                child: MyTextPoppines(
-                  text:
-                      "I consent to UINNO to store my personal information according to the Privacy Policy",
-                  fontSize: width * 0.0065,
-                  color: AppColors.white,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-            ],
           ),
           SizedBox(height: height * 0.04),
           Align(
             alignment: Alignment.center,
             child: MyTextPoppines(
-              text: "GET STARTED",
+              text: "SUBMIT",
               fontSize: width * 0.008,
               color: AppColors.orange,
               fontWeight: FontWeight.w600,
@@ -405,3 +405,161 @@ class ContactUsContainer extends StatelessWidget {
     );
   }
 }
+
+// class ContactUsContainer extends StatelessWidget {
+//   const ContactUsContainer({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final height = MediaQuery.sizeOf(context).height;
+//     final width = MediaQuery.sizeOf(context).width;
+//     TextEditingController nameController = TextEditingController();
+//     TextEditingController emailController = TextEditingController();
+//     TextEditingController phoneController = TextEditingController();
+//     TextEditingController messageController = TextEditingController();
+
+//     return Container(
+//       width: width * 0.34,
+//       height: height * 0.8,
+//       color: AppColors.black10,
+//       padding: EdgeInsets.symmetric(
+//         horizontal: width * 0.02,
+//         vertical: height * 0.03,
+//       ),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           SizedBox(height: height * 0.02),
+//           Row(
+//             children: [
+//               Transform.rotate(
+//                 angle: 45 * 3.141592653589793 / 180,
+//                 child: Container(
+//                   width: 8,
+//                   height: 8,
+//                   color: AppColors.orange,
+//                   margin: const EdgeInsets.only(top: 2),
+//                 ),
+//               ),
+//               SizedBox(width: width * 0.01),
+//               MyTextPoppines(
+//                 text: AppText.contactUs,
+//                 fontSize: width * 0.011,
+//                 color: AppColors.white,
+//                 fontWeight: FontWeight.w600,
+//                 height: 1,
+//               ),
+//             ],
+//           ),
+//           SizedBox(height: height * 0.04),
+//           SizedBox(height: height * 0.02),
+//           MyTextPoppines(
+//             text: AppText.simplyShareYourProject,
+//             fontSize: width * 0.0085,
+//             color: AppColors.white,
+//             fontWeight: FontWeight.w300,
+//             height: 1.6,
+//             maxLines: 10,
+//           ),
+//           SizedBox(height: height * 0.04),
+//           Row(
+//             children: [
+//               Expanded(
+//                 child: MyTextFeild(
+//                   controller: nameController,
+//                   lableText: "Name",
+//                 ),
+//               ),
+//               SizedBox(width: width * 0.01),
+//               Expanded(
+//                 child: MyTextFeild(
+//                   controller: emailController,
+//                   lableText: "Email",
+//                 ),
+//               ),
+//             ],
+//           ),
+//           SizedBox(height: height * 0.02),
+//           MyTextFeild(
+//             controller: phoneController,
+//             lableText: "Phone",
+//             isPhoneField: true,
+//           ),
+//           SizedBox(height: height * 0.02),
+//           MyTextFeild(
+//             controller: messageController,
+//             lableText: "Message",
+//             maxlines: 5,
+//           ),
+//           SizedBox(height: height * 0.04),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Row(
+//                 children: [
+//                   Checkbox(
+//                     activeColor: AppColors.orange,
+//                     value: true,
+//                     onChanged: (val) {},
+//                   ),
+//                   SizedBox(width: width * 0.005),
+//                   MyTextPoppines(
+//                     text: "Get an NDA",
+//                     fontSize: width * 0.008,
+//                     color: AppColors.white,
+//                     fontWeight: FontWeight.w400,
+//                   ),
+//                 ],
+//               ),
+//               TextButton.icon(
+//                 onPressed: () {},
+//                 icon: Icon(
+//                   Iconsax.paperclip_2_copy,
+//                   size: width * 0.01,
+//                   color: AppColors.orange,
+//                 ),
+//                 label: MyTextPoppines(
+//                   text: "Attach Files",
+//                   fontSize: width * 0.009,
+//                   color: AppColors.orange,
+//                   fontWeight: FontWeight.w500,
+//                 ),
+//               )
+//             ],
+//           ),
+//           SizedBox(height: height * 0.01),
+//           Row(
+//             children: [
+//               Checkbox(
+//                 activeColor: AppColors.orange,
+//                 value: true,
+//                 onChanged: (val) {},
+//               ),
+//               SizedBox(width: width * 0.008),
+//               SizedBox(
+//                 width: width * 0.27,
+//                 child: MyTextPoppines(
+//                   text:
+//                       "I consent to UINNO to store my personal information according to the Privacy Policy",
+//                   fontSize: width * 0.0065,
+//                   color: AppColors.white,
+//                   fontWeight: FontWeight.w300,
+//                 ),
+//               ),
+//             ],
+//           ),
+//           SizedBox(height: height * 0.04),
+//           Align(
+//             alignment: Alignment.center,
+//             child: MyTextPoppines(
+//               text: "GET STARTED",
+//               fontSize: width * 0.008,
+//               color: AppColors.orange,
+//               fontWeight: FontWeight.w600,
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

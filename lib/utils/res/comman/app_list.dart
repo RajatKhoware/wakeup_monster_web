@@ -1,3 +1,5 @@
+import 'package:wakeup_web/features/our%20services/models/service_model.dart';
+
 class AppList {
   static List<Service> digitalMarketingServices = [
     Service(
@@ -114,6 +116,91 @@ class AppList {
       "Michael Brown",
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",      
       "CIO",), ];
+
+
+     static List<ServiceModel> services = [
+      ServiceModel(
+        title: "Design & Creative.",
+        subPoints: [
+          "UI/UX Design",
+          "Web Design",
+          "Print Design",
+          "Digital Design",
+        ],
+        onTap: () {},
+      ),
+      ServiceModel(
+        title: "Branding.",
+        subPoints: [
+          "Logo",
+          "Brand Guide",
+          "Memorable Brand Design Strategy",
+          "Social Identity",
+        ],
+        onTap: () {},
+      ),
+      ServiceModel(
+        title: "Web Development.",
+        subPoints: [
+          "Frontend Development",
+          "Backend Development",
+          "API Integration",
+          "Responsive Design",
+        ],
+        onTap: () {},
+      ),
+      ServiceModel(
+        title: "App Development.",
+        subPoints: [
+          "iOS App Development",
+          "Android App Development",
+          "Cross-Platform Solutions",
+          "App Store Deployment",
+        ],
+        onTap: () {},
+      ),
+      ServiceModel(
+        title: "Growth Marketing.",
+        subPoints: [
+          "Content Marketing",
+          "Email Marketing",
+          "Search Engine Optimization",
+          "Pay-Per-Click",
+        ],
+        onTap: () {},
+      ),
+      ServiceModel(
+        title: "Social Marketing.",
+        subPoints: [
+          "Social Media Strategy",
+          "Social Media Advertising",
+          "Social Media Management",
+          "Influencer Marketing",
+        ],
+        onTap: () {},
+      ),
+      ServiceModel(
+        title: "Performance Marketing.",
+        subPoints: [
+          "Conversion Rate Optimization",
+          "Affiliate Marketing",
+          "Search Engine Marketing",
+          "Retargeting",
+        ],
+        onTap: () {},
+      ),
+      ServiceModel(
+        title: "Photography & Videography.",
+        subPoints: [
+          "Product Photography",
+          "Portrait Photography",
+          "Wedding Photography",
+          "Event Photography",
+        ],
+        onTap: () {},
+      ),
+    ];
+
 }
 
 class Service {

@@ -150,10 +150,10 @@ class _HomeQuateState extends State<HomeQuate> {
                 final testimonial = AppList.appTestimonial[index];
                 return Column(
                   children: [
-                    SizedBox(height: widget.height * 0.08),
+                    SizedBox(height: widget.height * 0.05),
                     MyTextPoppines(
                       text: testimonial.quote,
-                      fontSize: widget.width * 0.012,
+                      fontSize: widget.width * 0.015,
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w600,
                       color: AppColors.white,
