@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:wakeup_web/features/contactus%20form/controller/contact_us_controller.dart';
 import 'package:wakeup_web/features/contactus%20form/widget/my_drop_down.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
 import 'package:wakeup_web/utils/res/comman/my_textfield.dart';
+import 'package:wakeup_web/utils/res/validators/validators.dart';
 
 import '../../../utils/res/comman/app_text.dart';
 import '../../../utils/res/helper/my_custom_painter.dart';
@@ -96,174 +99,216 @@ class ContactUsContainer extends StatelessWidget {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
 
-    TextEditingController nameController = TextEditingController();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController phoneController = TextEditingController();
-    TextEditingController websiteController = TextEditingController();
-    TextEditingController designationController = TextEditingController();
-    TextEditingController addressController = TextEditingController();
-    TextEditingController budgetController = TextEditingController();
-    TextEditingController messageController = TextEditingController();
-
-    String selectedSource = "How did you get to know about us?";
-    List<String> sourceOptions = [
-      "How did you get to know about us?",
-      "Google",
-      "Social Media",
-      "Referral"
-    ];
+    final controller = Get.put(ContactUsController());
 
     return Container(
       width: width * 0.7,
-      // height: height * 0.9,
       color: AppColors.black10,
       padding: EdgeInsets.symmetric(
         horizontal: width * 0.02,
         vertical: height * 0.03,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // SizedBox(height: height * 0.02),
-          // MyTextPoppines(
-          //   text: AppText.contactUs,
-          //   fontSize: width * 0.011,
-          //   color: AppColors.white,
-          //   fontWeight: FontWeight.w600,
-          // ),
-          SizedBox(height: height * 0.02),
-          MyTextPoppines(
-            text: AppText.onceYourEmailGetsToOurInbox,
-            fontSize: width * 0.0085,
-            color: AppColors.white,
-            fontWeight: FontWeight.w300,
-            height: 1.6,
-            maxLines: 10,
-          ),
-          SizedBox(height: height * 0.04),
-          Row(
-            children: [
-              Expanded(
-                child: MyTextFeild(
-                  controller: nameController,
-                  lableText: "Full Name",
-                ),
-              ),
-              SizedBox(width: width * 0.01),
-              Expanded(
-                child: MyTextFeild(
-                  controller: emailController,
-                  lableText: "Email Address",
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: height * 0.02),
-          Row(
-            children: [
-              Expanded(
-                child: MyTextFeild(
-                  controller: phoneController,
-                  lableText: "Mobile Number",
-                  isPhoneField: true,
-                ),
-              ),
-              SizedBox(width: width * 0.01),
-              Expanded(
-                child: MyTextFeild(
-                  controller: websiteController,
-                  lableText: "Website",
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: height * 0.02),
-          Row(
-            children: [
-              Expanded(
-                child: MyDropdownField(
-                  labelText: "How did you get to know about us?",
-                  items: const [
-                    "How did you get to know about us?",
-                    "Google",
-                    "Social Media",
-                    "Referral"
-                  ],
-                  initialValue: "How did you get to know about us?",
-                  onChanged: (value) {
-                    print("Selected: $value");
-                  },
-                ),
-              ),
-              SizedBox(width: width * 0.01),
-              Expanded(
-                child: MyTextFeild(
-                  controller: designationController,
-                  lableText: "Designation/Profile",
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: height * 0.02),
-          Row(
-            children: [
-              Expanded(
-                child: MyTextFeild(
-                  controller: addressController,
-                  lableText: "Address",
-                ),
-              ),
-              SizedBox(width: width * 0.01),
-              Expanded(
-                child: MyTextFeild(
-                  controller: budgetController,
-                  lableText: "Budget",
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: height * 0.02),
-          MyTextFeild(
-            controller: messageController,
-            lableText: "Your Vision for Your Brand",
-            maxlines: 5,
-          ),
-          SizedBox(height: height * 0.04),
-          Align(
-            alignment: Alignment.center,
-            child: MyTextPoppines(
-              text: "SUBMIT",
-              fontSize: width * 0.008,
-              color: AppColors.orange,
-              fontWeight: FontWeight.w600,
+      child: Form(
+        key: controller.formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: height * 0.02),
+            MyTextPoppines(
+              text: AppText.onceYourEmailGetsToOurInbox,
+              fontSize: width * 0.0085,
+              color: AppColors.white,
+              fontWeight: FontWeight.w300,
+              height: 1.6,
+              maxLines: 10,
             ),
-          ),
-        ],
+            SizedBox(height: height * 0.04),
+
+            // Full Name & Email
+            Row(
+              children: [
+                Expanded(
+                  child: MyTextFeild(
+                    controller: controller.nameController,
+                    lableText: "Full Name",
+                    validator: Validator.validateName,
+                  ),
+                ),
+                SizedBox(width: width * 0.01),
+                Expanded(
+                  child: MyTextFeild(
+                    controller: controller.emailController,
+                    lableText: "Email Address",
+                    validator: Validator.validateEmail,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: height * 0.02),
+
+            // Phone & Website
+            Row(
+              children: [
+                Expanded(
+                  child: MyTextFeild(
+                    controller: controller.phoneController,
+                    lableText: "Mobile Number",
+                    isPhoneField: true,
+                    validator: Validator.validateContactNo,
+                  ),
+                ),
+                SizedBox(width: width * 0.01),
+                Expanded(
+                  child: MyTextFeild(
+                    controller: controller.websiteController,
+                    lableText: "Website",
+                    //   validator: Validator.validateUrl,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: height * 0.02),
+
+            // Dropdown & Designation
+            Row(
+              children: [
+                Expanded(
+                  child: Obx(() => MyDropdownField(
+                        labelText: "How did you get to know about us?",
+                        items: controller.sourceOptions,
+                        initialValue: controller.selectedSource.value,
+                        onChanged: (value) {
+                          controller.selectedSource.value = value;
+                        },
+                      )),
+                ),
+                SizedBox(width: width * 0.01),
+                Expanded(
+                  child: MyTextFeild(
+                    controller: controller.designationController,
+                    lableText: "Designation/Profile",
+                    validator: Validator.validateName,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: height * 0.02),
+
+            // Address & Budget
+            Row(
+              children: [
+                Expanded(
+                  child: MyTextFeild(
+                    controller: controller.addressController,
+                    lableText: "City",
+                    validator: Validator.nullValidator,
+                  ),
+                ),
+                SizedBox(width: width * 0.01),
+                Expanded(
+                  child: MyTextFeild(
+                    controller: controller.budgetController,
+                    lableText: "Budget",
+                    validator: Validator.nullValidator,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: height * 0.02),
+
+            // Message Field
+            MyTextFeild(
+              controller: controller.messageController,
+              lableText: "Your Vision for Your Brand",
+              maxlines: 5,
+              validator: Validator.nullValidator,
+            ),
+            SizedBox(height: height * 0.04),
+            // Error Message
+            Obx(
+              () => Column(
+                children: [
+                  Text(
+                    controller.error.value,
+                    style: const TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(height: height * 0.02),
+                ],
+              ),
+            ),
+            // Submit Button
+            Obx(
+              () {
+                if (controller.isLoading.value) {
+                  return const Center(
+                    child: CircularProgressIndicator(color: AppColors.orange),
+                  );
+                } else {
+                  return Align(
+                    alignment: Alignment.center,
+                    child: GestureDetector(
+                      onTap: () => controller.submitForm(context),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: width * 0.02,
+                          vertical: height * 0.01,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            color: AppColors.orange,
+                          ),
+                        ),
+                        child: MyTextPoppines(
+                          text: "SUBMIT",
+                          fontSize: width * 0.008,
+                          color: AppColors.orange,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-// Important do not remove
-// class ContactUsInfoContainer extends StatelessWidget {
-//   const ContactUsInfoContainer({super.key});
+// class ContactUsContainer extends StatelessWidget {
+//   const ContactUsContainer({super.key});
 
 //   @override
 //   Widget build(BuildContext context) {
 //     final height = MediaQuery.sizeOf(context).height;
 //     final width = MediaQuery.sizeOf(context).width;
-//     final icon = Transform.rotate(
-//       angle: 45 * 3.141592653589793 / 180,
-//       child: Container(
-//         width: 8,
-//         height: 8,
-//         color: AppColors.orange,
-//         margin: const EdgeInsets.only(top: 2),
-//       ),
-//     );
+
+//     TextEditingController nameController = TextEditingController();
+//     TextEditingController emailController = TextEditingController();
+//     TextEditingController phoneController = TextEditingController();
+//     TextEditingController websiteController = TextEditingController();
+//     TextEditingController designationController = TextEditingController();
+//     TextEditingController addressController = TextEditingController();
+//     TextEditingController budgetController = TextEditingController();
+//     TextEditingController messageController = TextEditingController();
+
+//     String selectedSource = "How did you get to know about us?";
+//     List<String> sourceOptions = [
+//       "How did you get to know about us?",
+//       "Google",
+//       "Social Media",
+//       "Referral"
+//     ];
+
 //     return Container(
-//       width: width * 0.34,
-//       height: height * 0.8,
+//       width: width * 0.7,
+//       // height: height * 0.9,
 //       color: AppColors.black10,
 //       padding: EdgeInsets.symmetric(
 //         horizontal: width * 0.02,
@@ -272,19 +317,13 @@ class ContactUsContainer extends StatelessWidget {
 //       child: Column(
 //         crossAxisAlignment: CrossAxisAlignment.start,
 //         children: [
-//           SizedBox(height: height * 0.011),
-//           Row(
-//             children: [
-//               icon,
-//               SizedBox(width: width * 0.01),
-//               MyTextPoppines(
-//                 text: AppText.whatsNext,
-//                 fontSize: width * 0.011,
-//                 color: AppColors.white,
-//                 fontWeight: FontWeight.w600,
-//               ),
-//             ],
-//           ),
+//           // SizedBox(height: height * 0.02),
+//           // MyTextPoppines(
+//           //   text: AppText.contactUs,
+//           //   fontSize: width * 0.011,
+//           //   color: AppColors.white,
+//           //   fontWeight: FontWeight.w600,
+//           // ),
 //           SizedBox(height: height * 0.02),
 //           MyTextPoppines(
 //             text: AppText.onceYourEmailGetsToOurInbox,
@@ -297,263 +336,96 @@ class ContactUsContainer extends StatelessWidget {
 //           SizedBox(height: height * 0.04),
 //           Row(
 //             children: [
-//               icon,
-//               SizedBox(width: width * 0.01),
-//               MyTextPoppines(
-//                 text: AppText.theFirstPointOfContact,
-//                 fontSize: width * 0.011,
-//                 color: AppColors.white,
-//                 fontWeight: FontWeight.w600,
-//               ),
-//             ],
-//           ),
-//           SizedBox(height: height * 0.03),
-//           // Photo Name Designation Line
-//           buildProfile(
-//             context: context,
-//             image: "",
-//             name: "Rajat Khoware",
-//             post: "Founder",
-//             quote: AppText.founderQuote,
-//           ),
-//           SizedBox(height: height * 0.02),
-//           buildProfile(
-//             context: context,
-//             image: "",
-//             name: "Akshay Sen",
-//             post: "Co-Founder",
-//             quote: AppText.coFounderQuote,
-//           ),
-//           SizedBox(height: height * 0.05),
-//           Row(
-//             children: [
-//               icon,
-//               SizedBox(width: width * 0.01),
-//               MyTextPoppines(
-//                 text: AppText.moreContacts,
-//                 fontSize: width * 0.011,
-//                 color: AppColors.white,
-//                 fontWeight: FontWeight.w600,
-//               ),
-//             ],
-//           ),
-//           SizedBox(height: height * 0.03),
-//           MyTextPoppines(
-//             text: AppText.contactEmail,
-//             fontSize: width * 0.008,
-//             color: AppColors.white,
-//             fontWeight: FontWeight.w400,
-//           ),
-//           SizedBox(height: height * 0.01),
-//           MyTextPoppines(
-//             text: AppText.bookACall,
-//             fontSize: width * 0.008,
-//             color: AppColors.orange,
-//             fontWeight: FontWeight.w600,
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Widget buildProfile({
-//     required BuildContext context,
-//     required String image,
-//     required String name,
-//     required String post,
-//     required String quote,
-//   }) {
-//     final height = MediaQuery.sizeOf(context).height;
-//     final width = MediaQuery.sizeOf(context).width;
-//     return Row(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Container(
-//           width: width * 0.06,
-//           height: height * 0.11,
-//           color: AppColors.lightGreen,
-//           // img
-//         ),
-//         SizedBox(width: width * 0.01),
-//         Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             MyTextPoppines(
-//               text: name,
-//               fontSize: width * 0.01,
-//               color: AppColors.orange,
-//               fontWeight: FontWeight.w600,
-//             ),
-//             MyTextPoppines(
-//               text: post,
-//               fontSize: width * 0.008,
-//               color: AppColors.white.withOpacity(0.6),
-//               fontWeight: FontWeight.w400,
-//             ),
-//             SizedBox(height: height * 0.012),
-//             SizedBox(
-//               width: width * 0.2,
-//               child: MyTextPoppines(
-//                 text: quote,
-//                 fontSize: width * 0.007,
-//                 color: AppColors.white,
-//                 fontWeight: FontWeight.w400,
-//               ),
-//             ),
-//           ],
-//         )
-//       ],
-//     );
-//   }
-// }
-
-// class ContactUsContainer extends StatelessWidget {
-//   const ContactUsContainer({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final height = MediaQuery.sizeOf(context).height;
-//     final width = MediaQuery.sizeOf(context).width;
-//     TextEditingController nameController = TextEditingController();
-//     TextEditingController emailController = TextEditingController();
-//     TextEditingController phoneController = TextEditingController();
-//     TextEditingController messageController = TextEditingController();
-
-//     return Container(
-//       width: width * 0.34,
-//       height: height * 0.8,
-//       color: AppColors.black10,
-//       padding: EdgeInsets.symmetric(
-//         horizontal: width * 0.02,
-//         vertical: height * 0.03,
-//       ),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           SizedBox(height: height * 0.02),
-//           Row(
-//             children: [
-//               Transform.rotate(
-//                 angle: 45 * 3.141592653589793 / 180,
-//                 child: Container(
-//                   width: 8,
-//                   height: 8,
-//                   color: AppColors.orange,
-//                   margin: const EdgeInsets.only(top: 2),
-//                 ),
-//               ),
-//               SizedBox(width: width * 0.01),
-//               MyTextPoppines(
-//                 text: AppText.contactUs,
-//                 fontSize: width * 0.011,
-//                 color: AppColors.white,
-//                 fontWeight: FontWeight.w600,
-//                 height: 1,
-//               ),
-//             ],
-//           ),
-//           SizedBox(height: height * 0.04),
-//           SizedBox(height: height * 0.02),
-//           MyTextPoppines(
-//             text: AppText.simplyShareYourProject,
-//             fontSize: width * 0.0085,
-//             color: AppColors.white,
-//             fontWeight: FontWeight.w300,
-//             height: 1.6,
-//             maxLines: 10,
-//           ),
-//           SizedBox(height: height * 0.04),
-//           Row(
-//             children: [
 //               Expanded(
 //                 child: MyTextFeild(
 //                   controller: nameController,
-//                   lableText: "Name",
+//                   lableText: "Full Name",
 //                 ),
 //               ),
 //               SizedBox(width: width * 0.01),
 //               Expanded(
 //                 child: MyTextFeild(
 //                   controller: emailController,
-//                   lableText: "Email",
+//                   lableText: "Email Address",
 //                 ),
 //               ),
 //             ],
 //           ),
 //           SizedBox(height: height * 0.02),
-//           MyTextFeild(
-//             controller: phoneController,
-//             lableText: "Phone",
-//             isPhoneField: true,
+//           Row(
+//             children: [
+//               Expanded(
+//                 child: MyTextFeild(
+//                   controller: phoneController,
+//                   lableText: "Mobile Number",
+//                   isPhoneField: true,
+//                 ),
+//               ),
+//               SizedBox(width: width * 0.01),
+//               Expanded(
+//                 child: MyTextFeild(
+//                   controller: websiteController,
+//                   lableText: "Website",
+//                 ),
+//               ),
+//             ],
+//           ),
+//           SizedBox(height: height * 0.02),
+//           Row(
+//             children: [
+//               Expanded(
+//                 child: MyDropdownField(
+//                   labelText: "How did you get to know about us?",
+//                   items: const [
+//                     "How did you get to know about us?",
+//                     "Google",
+//                     "Social Media",
+//                     "Referral"
+//                   ],
+//                   initialValue: "How did you get to know about us?",
+//                   onChanged: (value) {
+//                     print("Selected: $value");
+//                   },
+//                 ),
+//               ),
+//               SizedBox(width: width * 0.01),
+//               Expanded(
+//                 child: MyTextFeild(
+//                   controller: designationController,
+//                   lableText: "Designation/Profile",
+//                 ),
+//               ),
+//             ],
+//           ),
+//           SizedBox(height: height * 0.02),
+//           Row(
+//             children: [
+//               Expanded(
+//                 child: MyTextFeild(
+//                   controller: addressController,
+//                   lableText: "Address",
+//                 ),
+//               ),
+//               SizedBox(width: width * 0.01),
+//               Expanded(
+//                 child: MyTextFeild(
+//                   controller: budgetController,
+//                   lableText: "Budget",
+//                 ),
+//               ),
+//             ],
 //           ),
 //           SizedBox(height: height * 0.02),
 //           MyTextFeild(
 //             controller: messageController,
-//             lableText: "Message",
+//             lableText: "Your Vision for Your Brand",
 //             maxlines: 5,
-//           ),
-//           SizedBox(height: height * 0.04),
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               Row(
-//                 children: [
-//                   Checkbox(
-//                     activeColor: AppColors.orange,
-//                     value: true,
-//                     onChanged: (val) {},
-//                   ),
-//                   SizedBox(width: width * 0.005),
-//                   MyTextPoppines(
-//                     text: "Get an NDA",
-//                     fontSize: width * 0.008,
-//                     color: AppColors.white,
-//                     fontWeight: FontWeight.w400,
-//                   ),
-//                 ],
-//               ),
-//               TextButton.icon(
-//                 onPressed: () {},
-//                 icon: Icon(
-//                   Iconsax.paperclip_2_copy,
-//                   size: width * 0.01,
-//                   color: AppColors.orange,
-//                 ),
-//                 label: MyTextPoppines(
-//                   text: "Attach Files",
-//                   fontSize: width * 0.009,
-//                   color: AppColors.orange,
-//                   fontWeight: FontWeight.w500,
-//                 ),
-//               )
-//             ],
-//           ),
-//           SizedBox(height: height * 0.01),
-//           Row(
-//             children: [
-//               Checkbox(
-//                 activeColor: AppColors.orange,
-//                 value: true,
-//                 onChanged: (val) {},
-//               ),
-//               SizedBox(width: width * 0.008),
-//               SizedBox(
-//                 width: width * 0.27,
-//                 child: MyTextPoppines(
-//                   text:
-//                       "I consent to UINNO to store my personal information according to the Privacy Policy",
-//                   fontSize: width * 0.0065,
-//                   color: AppColors.white,
-//                   fontWeight: FontWeight.w300,
-//                 ),
-//               ),
-//             ],
 //           ),
 //           SizedBox(height: height * 0.04),
 //           Align(
 //             alignment: Alignment.center,
 //             child: MyTextPoppines(
-//               text: "GET STARTED",
+//               text: "SUBMIT",
 //               fontSize: width * 0.008,
 //               color: AppColors.orange,
 //               fontWeight: FontWeight.w600,

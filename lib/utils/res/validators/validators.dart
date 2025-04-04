@@ -56,4 +56,22 @@ class Validator {
     }
     return null;
   }
+
+  // VALIDATE NAME
+  static String? validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      return "Name is required";
+    }
+    return null;
+  }
+
+  // VALIDATE URL
+  static String? validateUrl(String? value) {
+    if (value == null || value.isEmpty) {
+      return "URL is required";
+    }
+    final regex =
+        RegExp(r'^https?:\/\/(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(?:\/[^\s]*)?$');
+    return !regex.hasMatch(value) ? 'Enter a valid URL' : null;
+  }
 }

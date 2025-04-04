@@ -8,12 +8,14 @@ class MyTextFeild extends StatelessWidget {
   final String lableText;
   final int? maxlines;
   final bool? isPhoneField;
+  final String? Function(String?)? validator;
   const MyTextFeild({
     super.key,
     required this.controller,
     required this.lableText,
     this.maxlines,
     this.isPhoneField,
+    this.validator,
   });
 
   @override
@@ -56,6 +58,7 @@ class MyTextFeild extends StatelessWidget {
           color: AppColors.white,
         ),
       ),
+      validator: validator,
     );
   }
 }
