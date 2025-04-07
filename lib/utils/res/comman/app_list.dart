@@ -68,7 +68,7 @@ class AppList {
   ];
 
   // we help
- static List wehelp = [
+  static List wehelp = [
     [
       "Startups",
       "To validate their idea, make an MVP and grow it into a commercial product.",
@@ -90,117 +90,159 @@ class AppList {
       "SOCIAL RESPONSIBILITY",
     ],
   ];
-
   static List<AppTestimonial> appTestimonial = [
     AppTestimonial(
-      "John Doe",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
-      "CEO",
+      "Ritika Sharma",
+      "The team at Wake Up Monster understood our brand vision and brought it to life with stunning visuals. Their creativity and timely communication made the process smooth. Highly recommended!",
+      "Founder, Chai & Chill (India)",
     ),
     AppTestimonial(
-      "Jane Smith",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
-      "CTO",
+      "Rahul Mishra",
+      "We needed a fast, responsive website for our ed-tech platform, and Wake Up Monster nailed it. The UI/UX was clean, and the site loads like a charm.",
+      "CTO, LearnLoop (India)",
     ),
     AppTestimonial(
-      "Mark Johnson",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
-      "CFO",
+      "Sophie Lemaire",
+      "Wake Up Monster gave our brand the refresh it desperately needed. Their design team is exceptional — always delivering with a balance of strategy and creativity.",
+      "Brand Manager, Lumière Skincare (France)",
     ),
     AppTestimonial(
-      "Sara Davis",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
-      "COO",
+      "Carlos Rivera",
+      "They built our entire portfolio website in under three weeks. Great eye for detail, SEO-ready, and mobile-first design. Can’t wait to work with them again.",
+      "Photographer (Spain)",
     ),
     AppTestimonial(
-      "Michael Brown",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",      
-      "CIO",), ];
+      "Pratik Joshi",
+      "I had an app idea but didn’t know how to bring it to life. The Wake Up Monster team walked me through every step, from UI wireframes to app store launch.",
+      "Solo Founder, FitFlex (India)",
+    ),
+    AppTestimonial(
+      "Jenna Walters",
+      "The app for our local food delivery service was developed smoothly. The UX is slick, and performance is top-notch. Wake Up Monster really knows Flutter!",
+      "Co-Founder, Grubbly (USA)",
+    ),
+    AppTestimonial(
+      "Arjun Tiwari",
+      "We hired Wake Up Monster to integrate a chatbot into our e-commerce platform. The AI flow they built was smooth, and customer support improved significantly.",
+      "Product Head, ShopYard (India)",
+    ),
+    AppTestimonial(
+      "Andreas Muller",
+      "We outsourced an AI-based inventory prediction module to Wake Up Monster. They delivered a scalable, cloud-integrated solution on time. Reliable team with deep tech knowledge.",
+      "CTO, StockInsight GmbH (Germany)",
+    ),
+  ];
 
+  // static List<AppTestimonial> appTestimonial = [
+  //   AppTestimonial(
+  //     "John Doe",
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
+  //     "CEO",
+  //   ),
+  //   AppTestimonial(
+  //     "Jane Smith",
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
+  //     "CTO",
+  //   ),
+  //   AppTestimonial(
+  //     "Mark Johnson",
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
+  //     "CFO",
+  //   ),
+  //   AppTestimonial(
+  //     "Sara Davis",
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
+  //     "COO",
+  //   ),
+  //   AppTestimonial(
+  //     "Michael Brown",
+  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
+  //     "CIO",
+  //   ),
+  // ];
 
-     static List<ServiceModel> services = [
-      ServiceModel(
-        title: "Design & Creative.",
-        subPoints: [
-          "UI/UX Design",
-          "Web Design",
-          "Print Design",
-          "Digital Design",
-        ],
-        onTap: () {},
-      ),
-      ServiceModel(
-        title: "Branding.",
-        subPoints: [
-          "Logo",
-          "Brand Guide",
-          "Memorable Brand Design Strategy",
-          "Social Identity",
-        ],
-        onTap: () {},
-      ),
-      ServiceModel(
-        title: "Web Development.",
-        subPoints: [
-          "Frontend Development",
-          "Backend Development",
-          "API Integration",
-          "Responsive Design",
-        ],
-        onTap: () {},
-      ),
-      ServiceModel(
-        title: "App Development.",
-        subPoints: [
-          "iOS App Development",
-          "Android App Development",
-          "Cross-Platform Solutions",
-          "App Store Deployment",
-        ],
-        onTap: () {},
-      ),
-      ServiceModel(
-        title: "Growth Marketing.",
-        subPoints: [
-          "Content Marketing",
-          "Email Marketing",
-          "Search Engine Optimization",
-          "Pay-Per-Click",
-        ],
-        onTap: () {},
-      ),
-      ServiceModel(
-        title: "Social Marketing.",
-        subPoints: [
-          "Social Media Strategy",
-          "Social Media Advertising",
-          "Social Media Management",
-          "Influencer Marketing",
-        ],
-        onTap: () {},
-      ),
-      ServiceModel(
-        title: "Performance Marketing.",
-        subPoints: [
-          "Conversion Rate Optimization",
-          "Affiliate Marketing",
-          "Search Engine Marketing",
-          "Retargeting",
-        ],
-        onTap: () {},
-      ),
-      ServiceModel(
-        title: "Photography & Videography.",
-        subPoints: [
-          "Product Photography",
-          "Portrait Photography",
-          "Wedding Photography",
-          "Event Photography",
-        ],
-        onTap: () {},
-      ),
-    ];
-
+  static List<ServiceModel> services = [
+    ServiceModel(
+      title: "Design & Creative.",
+      subPoints: [
+        "UI/UX Design",
+        "Web Design",
+        "Print Design",
+        "Digital Design",
+      ],
+      onTap: () {},
+    ),
+    ServiceModel(
+      title: "Branding.",
+      subPoints: [
+        "Logo",
+        "Brand Guide",
+        "Memorable Brand Design Strategy",
+        "Social Identity",
+      ],
+      onTap: () {},
+    ),
+    ServiceModel(
+      title: "Web Development.",
+      subPoints: [
+        "Frontend Development",
+        "Backend Development",
+        "API Integration",
+        "Responsive Design",
+      ],
+      onTap: () {},
+    ),
+    ServiceModel(
+      title: "App Development.",
+      subPoints: [
+        "iOS App Development",
+        "Android App Development",
+        "Cross-Platform Solutions",
+        "App Store Deployment",
+      ],
+      onTap: () {},
+    ),
+    ServiceModel(
+      title: "Growth Marketing.",
+      subPoints: [
+        "Content Marketing",
+        "Email Marketing",
+        "Search Engine Optimization",
+        "Pay-Per-Click",
+      ],
+      onTap: () {},
+    ),
+    ServiceModel(
+      title: "Social Marketing.",
+      subPoints: [
+        "Social Media Strategy",
+        "Social Media Advertising",
+        "Social Media Management",
+        "Influencer Marketing",
+      ],
+      onTap: () {},
+    ),
+    ServiceModel(
+      title: "Performance Marketing.",
+      subPoints: [
+        "Conversion Rate Optimization",
+        "Affiliate Marketing",
+        "Search Engine Marketing",
+        "Retargeting",
+      ],
+      onTap: () {},
+    ),
+    ServiceModel(
+      title: "Photography & Videography.",
+      subPoints: [
+        "Product Photography",
+        "Portrait Photography",
+        "Wedding Photography",
+        "Event Photography",
+      ],
+      onTap: () {},
+    ),
+  ];
 }
 
 class Service {
@@ -214,7 +256,6 @@ class Service {
     this.isHovered,
   );
 }
-
 
 class AppTestimonial {
   final String name;

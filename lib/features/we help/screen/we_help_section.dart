@@ -20,11 +20,13 @@ class WeHelpSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(height: height * 0.08),
             MyTextPoppines(
               text: "DO YOU KNOW?",
               fontSize: width * 0.008,
               color: AppColors.orange,
               fontWeight: FontWeight.w500,
+              height: 0,
             ),
             MyTextPoppines(
               text: "WE HELP",

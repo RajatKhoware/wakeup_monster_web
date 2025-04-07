@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wakeup_web/features/home/widgets/scrolling_brands.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
 import 'package:wakeup_web/utils/res/my_text.dart';
 
@@ -13,7 +14,9 @@ class WhatMakesUsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: height * 0.04),
+        SizedBox(height: height * 0.0),
+        const ScrollingBrandsWidget(),
+        SizedBox(height: height * 0.08),
         MyTextPoppines(
           text: "What makes us more than just an agency?",
           fontSize: width * 0.015,
@@ -24,11 +27,11 @@ class WhatMakesUsSection extends StatelessWidget {
         MyTextPoppines(
           text: "We don’t just develop—we Awaken, Elevate, and Evolve.",
           fontSize: width * 0.028,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.bold,
           color: AppColors.orange,
           height: 0,
         ),
-        SizedBox(height: height * 0.14),
+        SizedBox(height: height * 0.12),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -72,7 +75,8 @@ class WhatMakesUsSection extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: height * 0.14),
+
+        SizedBox(height: height * 0.12),
         Align(
           alignment: Alignment.topLeft,
           child: SizedBox(
@@ -107,7 +111,10 @@ class WhatMakesUsSection extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 60),
+        SizedBox(height: height * 0.08),
+        // Scrolling Brands
+        const ScrollingBrandsWidget2(),
+        SizedBox(height: height * 0.04),
       ],
     );
   }

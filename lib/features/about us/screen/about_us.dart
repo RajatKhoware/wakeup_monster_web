@@ -17,20 +17,17 @@ class AboutUsSection extends StatelessWidget {
     final width = MediaQuery.sizeOf(context).width;
     // ALL SERVICES
     List<String> services = [
-      "Discovery phase",
-      "Product design",
-      "Product development",
-      "Web development",
-      "MVP development",
-      "Technology consulting",
-      "AI / ML development",
-      "Mobile development",
-      "Solution design",
-      "Custom software development",
-      "Blockchain / Web3.0 / NFT",
-      "CTO Advisory",
+      "Mobile App Development",
+      "Web Development",
+      "MVP Development",
+      "AI & Automation Solutions",
+      "Custom Software Development",
+      "UI/UX Design",
+      "Product Discovery & Strategy",
+      "Design & Creative",
+      "Branding",
+      "Marketing"
     ];
-
     // SOLUTIONS FOR
     List<String> solutionsFor = [
       "SMBs",
@@ -45,7 +42,7 @@ class AboutUsSection extends StatelessWidget {
       "Pricing",
       "About us",
       "Insights",
-      "Partnership",
+      // "Partnership",
     ];
 
     // Industries
@@ -153,11 +150,11 @@ class AboutUsSection extends StatelessWidget {
                           list: company,
                           heading: AppText.company,
                         ),
-                        SizedBox(width: width * 0.03),
-                        AboutUsCategories(
-                          list: industries,
-                          heading: AppText.industries,
-                        ),
+                        // SizedBox(width: width * 0.03),
+                        // AboutUsCategories(
+                        //   list: industries,
+                        //   heading: AppText.industries,
+                        // ),
                       ],
                     )
                   ],

@@ -10,6 +10,7 @@ class MyTextPoppines extends StatelessWidget {
   final int? maxLines;
   final TextAlign? textAlign;
   final double? letterSpacing;
+  final bool? stroke;
   const MyTextPoppines({
     Key? key,
     required this.text,
@@ -18,7 +19,9 @@ class MyTextPoppines extends StatelessWidget {
     this.fontWeight,
     this.height,
     this.maxLines,
-    this.textAlign, this.letterSpacing,
+    this.textAlign,
+    this.letterSpacing,
+    this.stroke,
   }) : super(key: key);
 
   @override
@@ -31,9 +34,16 @@ class MyTextPoppines extends StatelessWidget {
         fontSize: fontSize ?? width / 28,
         fontWeight: fontWeight ?? FontWeight.normal,
         fontStyle: FontStyle.normal,
-        color: color ?? Colors.black,
+        //  color: color ?? Colors.black,
         height: height ?? (heights > 650 ? heights / 600 : heights / 600),
-        letterSpacing: letterSpacing?? 0,
+        letterSpacing: letterSpacing ?? 0,
+        foreground: stroke ?? false
+            ? (Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 0.5
+              ..color = Colors.black)
+            : null,
+        color: stroke ?? false ? null : color ?? Colors.black,
       ),
       textAlign: textAlign,
       maxLines: maxLines ?? 2,
@@ -41,7 +51,6 @@ class MyTextPoppines extends StatelessWidget {
     );
   }
 }
-
 
 class SelectablePoppines extends StatelessWidget {
   final String text;
@@ -60,7 +69,8 @@ class SelectablePoppines extends StatelessWidget {
     this.fontWeight,
     this.height,
     this.maxLines,
-    this.textAlign, this.letterSpacing,
+    this.textAlign,
+    this.letterSpacing,
   }) : super(key: key);
 
   @override
@@ -75,7 +85,7 @@ class SelectablePoppines extends StatelessWidget {
         fontStyle: FontStyle.normal,
         color: color ?? Colors.black,
         height: height ?? 1.4,
-        letterSpacing: letterSpacing?? 0,
+        letterSpacing: letterSpacing ?? 0,
       ),
       textAlign: textAlign,
       maxLines: maxLines ?? 2,

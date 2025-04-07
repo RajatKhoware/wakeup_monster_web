@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:wakeup_web/features/our%20services/widget/services_card.dart';
 import 'package:wakeup_web/utils/res/comman/app_text.dart';
 
 import '../../../utils/res/comman/app_colors.dart';
@@ -67,14 +68,29 @@ class WhyChooseUsSection extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: height * 0.08),
-          MyTextPoppines(
-            text: "Wonder Why?",
-            fontSize: width * 0.01,
-            color: AppColors.orange,
-            fontWeight: FontWeight.w600,
+          SizedBox(height: height * 0.1),
+          SizedBox(
+            child: CustomPaint(
+              painter: MyRectanglePainter(),
+              size: Size(width * 0.02, height * 0.02),
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: height * 0.01,
+                  left: width * 0.04,
+                  right: width * 0.04,
+                  bottom: height * 0.01,
+                ),
+                child: MyTextPoppines(
+                  text: "Wonder Why ?",
+                  fontSize: width * 0.01,
+                  color: AppColors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
           ),
-          SizedBox(height: height * 0.04),
+
+          SizedBox(height: height * 0.06),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -84,13 +100,13 @@ class WhyChooseUsSection extends StatelessWidget {
                 AppText.chooseUsPointHeading1,
                 AppText.chooseUsPointSubHeading1,
               ),
-              SizedBox(width: width * 0.02),
+              SizedBox(width: width * 0.04),
               buildPoints(
                 context,
                 AppText.chooseUsPointHeading2,
                 AppText.chooseUsPointSubHeading2,
               ),
-              SizedBox(width: width * 0.02),
+              SizedBox(width: width * 0.04),
               buildPoints(
                 context,
                 AppText.chooseUsPointHeading3,
@@ -159,13 +175,13 @@ class WhyChooseUsSection extends StatelessWidget {
         Transform.rotate(
           angle: 45 * 3.141592653589793 / 180, // 45 degrees in radians
           child: Container(
-            width: 8,
-            height: 8,
+            width: 6,
+            height: 6,
             color: AppColors.orange,
             margin: const EdgeInsets.only(top: 10),
           ),
         ),
-        SizedBox(width: width * 0.01),
+        SizedBox(width: width * 0.006),
         SizedBox(
           width: width * 0.2,
           child: Column(
@@ -181,7 +197,7 @@ class WhyChooseUsSection extends StatelessWidget {
               SizedBox(height: height * 0.01),
               MyTextPoppines(
                 text: subHeading,
-                fontSize: width * 0.009,
+                fontSize: width * 0.0085,
                 color: AppColors.black.withOpacity(0.8),
                 fontWeight: FontWeight.w400,
                 maxLines: 10,

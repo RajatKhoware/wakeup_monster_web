@@ -39,8 +39,7 @@ class HomePage extends StatelessWidget {
                   fontSize: width * 0.008,
                 ),
                 SizedBox(height: height * 0.01),
-                // Banner + Headlines
-                HomeBanner(width: width, height: height),
+                HomeBanner(width: width, height: height), // Banner + Headlines
                 SizedBox(height: height * 0.015),
                 SizedBox(
                   width: width * 0.3,
@@ -66,30 +65,22 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(height: height * 0.015),
                 // Founder Quate
-                HomeQuate(width: width, height: height),
+                const HomeQuate(),
                 SizedBox(height: height * 0.2),
               ],
             ),
           ),
         ),
-
         // What makes us
         const WhatMakesUsSection(),
-        SizedBox(height: height * 0.1),
+        SizedBox(height: height * 0.0),
       ],
     );
   }
 }
 
 class HomeQuate extends StatefulWidget {
-  const HomeQuate({
-    super.key,
-    required this.width,
-    required this.height,
-  });
-
-  final double width;
-  final double height;
+  const HomeQuate({super.key});
 
   @override
   State<HomeQuate> createState() => _HomeQuateState();
@@ -131,18 +122,20 @@ class _HomeQuateState extends State<HomeQuate> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
+    final width = MediaQuery.sizeOf(context).width;
     return Stack(
       alignment: Alignment.center,
       children: [
         Container(
-          width: widget.width * 0.7,
+          width: width * 0.5,
           color: AppColors.black10,
           padding: EdgeInsets.symmetric(
-            vertical: widget.height * 0.08,
-            horizontal: widget.width * 0.08,
+            vertical: height * 0.04,
+            horizontal: width * 0.06,
           ),
           child: SizedBox(
-            height: widget.height * 0.3,
+            height: height * 0.24,
             child: PageView.builder(
               controller: _pageController,
               onPageChanged: (index) {
@@ -155,28 +148,28 @@ class _HomeQuateState extends State<HomeQuate> {
                 final testimonial = AppList.appTestimonial[index];
                 return Column(
                   children: [
-                    SizedBox(height: widget.height * 0.05),
+                    SizedBox(height: height * 0.05),
                     MyTextPoppines(
                       text: testimonial.quote,
-                      fontSize: widget.width * 0.015,
+                      fontSize: width * 0.01,
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w600,
                       color: AppColors.white,
                       maxLines: 3,
                     ),
-                    SizedBox(height: widget.height * 0.03),
+                    SizedBox(height: height * 0.03),
                     MyTextPoppines(
                       text: testimonial.name,
-                      fontSize: widget.width * 0.008,
+                      fontSize: width * 0.006,
                       textAlign: TextAlign.center,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w700,
                       color: AppColors.lightGreen,
                     ),
                     MyTextPoppines(
                       text: testimonial.heading,
-                      fontSize: widget.width * 0.008,
+                      fontSize: width * 0.006,
                       textAlign: TextAlign.center,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w700,
                       color: AppColors.lightGreen,
                     ),
                   ],
@@ -187,7 +180,7 @@ class _HomeQuateState extends State<HomeQuate> {
         ),
         // Left Navigation Button
         Positioned(
-          left: widget.width * 0.04,
+          left: width * 0.026,
           child: IconButton(
             onPressed: () {
               _pageController.previousPage(
@@ -198,13 +191,13 @@ class _HomeQuateState extends State<HomeQuate> {
             icon: Icon(
               Icons.arrow_back_ios,
               color: AppColors.lightGreen,
-              size: widget.width * 0.02,
+              size: width * 0.012,
             ),
           ),
         ),
         // Right Navigation Button
         Positioned(
-          right: widget.width * 0.04,
+          right: width * 0.026,
           child: IconButton(
             onPressed: () {
               _pageController.nextPage(
@@ -215,7 +208,7 @@ class _HomeQuateState extends State<HomeQuate> {
             icon: Icon(
               Icons.arrow_forward_ios,
               color: AppColors.lightGreen,
-              size: widget.width * 0.02,
+              size: width * 0.012,
             ),
           ),
         ),

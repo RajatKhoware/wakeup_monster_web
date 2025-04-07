@@ -16,7 +16,7 @@ class ClientReviewSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: height * 0.1),
+        SizedBox(height: height * 0.06),
         Align(
           alignment: Alignment.center,
           child: MyTextPoppines(
@@ -30,51 +30,134 @@ class ClientReviewSection extends StatelessWidget {
           alignment: Alignment.center,
           child: MyTextPoppines(
             text: "WHY CLIENTS LOVE US",
-               fontSize: width * 0.04,
-              fontWeight: FontWeight.bold,
-              color: AppColors.white,
-              letterSpacing: -5,
-          ),
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: MyTextPoppines(
-            text:
-                "Don’t take a word for it. See what our partners have to say about us",
-            fontSize: width * 0.008,
+            fontSize: width * 0.04,
+            fontWeight: FontWeight.bold,
             color: AppColors.white,
-            fontWeight: FontWeight.w400,
+            letterSpacing: -5,
+            height: 0,
           ),
         ),
-        SizedBox(height: height * 0.06),
-        SizedBox(
-          height: height * 0.4,
-          child: ScrollConfiguration(
-            behavior: ScrollConfiguration.of(context).copyWith(
-              dragDevices: {
-                PointerDeviceKind.touch,
-                PointerDeviceKind.mouse,
-              },
+        // Align(
+        //   alignment: Alignment.center,
+        //   child: MyTextPoppines(
+        //     text:
+        //         "Don’t take a word for it. See what our partners have to say about us",
+        //     fontSize: width * 0.008,
+        //     color: AppColors.white.withOpacity(0.6),
+        //     //     color: AppColors.white,
+        //     fontWeight: FontWeight.w400,
+        //   ),
+        // ),
+        SizedBox(height: height * 0.08),
+        Row(
+          children: [
+            ReviewCard2(
+              title: "Web development for a digital sports products company",
+              subTitle:
+                  "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard to reduce downtime on our products. The team has been accessible, and they’ve delivered the platform in a timely manner. Their passion and commitment have stood out in the partnership.”",
+              image: AppImg.blackMonster,
+              name: "Rajat Khoware",
+              designation: "Founder Wakeup Monsters",
             ),
-            child: ListView.builder(
-              reverse: true,
-              physics: const AlwaysScrollableScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return const ReviewCard(
-                  title:
-                      "Web development for a digital sports products company",
-                  subTitle:
-                      "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard to reduce downtime on our products. The team has been accessible, and they’ve delivered the platform in a timely manner. Their passion and commitment have stood out in the partnership.”",
-                  image: AppImg.blackMonster,
-                  name: "Rajat Khoware",
-                  designation: "Founder Wakeup Monsters",
-                );
-              },
+            ReviewCard2(
+              title: "Web development for a digital sports products company",
+              subTitle:
+                  "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard to reduce downtime on our products. The team has been accessible, and they’ve delivered the platform in a timely manner. Their passion and commitment have stood out in the partnership.”",
+              image: AppImg.blackMonster,
+              name: "Rajat Khoware",
+              designation: "Founder Wakeup Monsters",
             ),
-          ),
-        )
+            ReviewCard2(
+              title: "Web development for a digital sports products company",
+              subTitle:
+                  "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard to reduce downtime on our products. The team has been accessible, and they’ve delivered the platform in a timely manner. Their passion and commitment have stood out in the partnership.”",
+              image: AppImg.blackMonster,
+              name: "Rajat Khoware",
+              designation: "Founder Wakeup Monsters",
+            )
+          ],
+        ),
+        Row(
+          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Spacer(),
+            ReviewCard2(
+              title: "Web development for a digital sports products company",
+              subTitle:
+                  "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard to reduce downtime on our products. The team has been accessible, and they’ve delivered the platform in a timely manner. Their passion and commitment have stood out in the partnership.”",
+              image: AppImg.blackMonster,
+              name: "Rajat Khoware",
+              designation: "Founder Wakeup Monsters",
+            ),
+            ReviewCard2(
+              title: "Web development for a digital sports products company",
+              subTitle:
+                  "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard to reduce downtime on our products. The team has been accessible, and they’ve delivered the platform in a timely manner. Their passion and commitment have stood out in the partnership.”",
+              image: AppImg.blackMonster,
+              name: "Rajat Khoware",
+              designation: "Founder Wakeup Monsters",
+            ),
+            Spacer()
+          ],
+        ),
+        Row(
+          children: [
+            ReviewCard2(
+              title: "Web development for a digital sports products company",
+              subTitle:
+                  "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard .”",
+              image: AppImg.blackMonster,
+              name: "Rajat Khoware",
+              designation: "Founder Wakeup Monsters",
+            ),
+            ReviewCard2(
+              title: "Web development for a digital sports products company",
+              subTitle:
+                  "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard .”",
+              image: AppImg.blackMonster,
+              name: "Rajat Khoware",
+              designation: "Founder Wakeup Monsters",
+            ),
+            ReviewCard2(
+              title: "Web development for a digital sports products company",
+              subTitle:
+                  "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard .”",
+              image: AppImg.blackMonster,
+              name: "Rajat Khoware",
+              designation: "Founder Wakeup Monsters",
+            )
+          ],
+        ),
+        SizedBox(height: height * 0.1),
+
+        // SizedBox(
+        //   height: height * 0.4,
+        //   child: ScrollConfiguration(
+        //     behavior: ScrollConfiguration.of(context).copyWith(
+        //       dragDevices: {
+        //         PointerDeviceKind.touch,
+        //         PointerDeviceKind.mouse,
+        //       },
+        //     ),
+        //     child: ListView.builder(
+        //       reverse: true,
+        //       physics: const AlwaysScrollableScrollPhysics(),
+        //       scrollDirection: Axis.horizontal,
+        //       itemCount: 10,
+        //       itemBuilder: (context, index) {
+        //         return const ReviewCard2(
+        //           title:
+        //               "Web development for a digital sports products company",
+        //           subTitle:
+        //               "“Their passion and dedication to the tasks are impressive. Thanks to Uinno’s efforts, they’ve worked hard to reduce downtime on our products. The team has been accessible, and they’ve delivered the platform in a timely manner. Their passion and commitment have stood out in the partnership.”",
+        //           image: AppImg.blackMonster,
+        //           name: "Rajat Khoware",
+        //           designation: "Founder Wakeup Monsters",
+        //         );
+        //       },
+        //     ),
+        //   ),
+        // )
       ],
     );
   }
