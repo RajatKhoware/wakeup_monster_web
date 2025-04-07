@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wakeup_web/features/home/screens/what_makes_us_section.dart';
 import 'package:wakeup_web/my%20web/controller/my_web_controller.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
 import 'package:wakeup_web/utils/res/comman/app_list.dart';
@@ -66,11 +67,15 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: height * 0.015),
                 // Founder Quate
                 HomeQuate(width: width, height: height),
-                SizedBox(height: height * 0.1),
+                SizedBox(height: height * 0.2),
               ],
             ),
           ),
         ),
+
+        // What makes us
+        const WhatMakesUsSection(),
+        SizedBox(height: height * 0.1),
       ],
     );
   }

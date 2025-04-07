@@ -35,10 +35,10 @@ class MyWeb extends StatelessWidget {
         controller: controller.scrollController,
         child: const Column(
           children: [
-            // HomePage(),
-            // OurServices(),
-            // ClientReviewSection(),
-            // WhyChooseUsSection(),
+            HomePage(),
+            OurServices(),
+            ClientReviewSection(),
+            WhyChooseUsSection(),
             ContactUsSection(),
             AboutUsSection()
           ],
