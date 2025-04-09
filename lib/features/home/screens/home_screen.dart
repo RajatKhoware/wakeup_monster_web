@@ -71,9 +71,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        // What makes us
-        const WhatMakesUsSection(),
-        SizedBox(height: height * 0.0),
       ],
     );
   }

@@ -26,11 +26,13 @@ class MyApp extends StatelessWidget {
 }
 
 
-// About 
-// 1. make email redirection
-// 2. make website tapable 
-// 3. put link of sm
-// 4. work on site under maintaince page 
-// 5. Change text and color pallet of website
-// 6. change logo of website
-// 6. Convert it into mobile view 
+ 
+
+// Needs
+// 1. Use same spacing and same font size for everything
+// 2. real brand images
+// 3. change logo
+// 4. put link of sm
+// 5. email + website 
+// 6. site under maintanice page
+// 7. convert to mobile view

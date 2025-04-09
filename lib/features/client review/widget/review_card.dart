@@ -97,6 +97,7 @@ class ReviewCard extends StatelessWidget {
 class ReviewCard2 extends StatelessWidget {
   final String title, subTitle, image, name, designation;
   final double randomOpacity;
+  final double width;
   ReviewCard2({
     super.key,
     required this.title,
@@ -104,6 +105,7 @@ class ReviewCard2 extends StatelessWidget {
     required this.image,
     required this.name,
     required this.designation,
+    this.width = 0.3,
   }) : randomOpacity = Random().nextDouble() * (0.12 - 0.02) + 0.06;
 
   @override
@@ -111,7 +113,7 @@ class ReviewCard2 extends StatelessWidget {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Container(
-      width: width * 0.3,
+      width: width * this.width,
       margin: EdgeInsets.symmetric(
         horizontal: width * 0.012,
         vertical: height * 0.02,
@@ -150,24 +152,24 @@ class ReviewCard2 extends StatelessWidget {
             maxLines: 10,
           ),
           SizedBox(height: height * 0.018),
-          Row(
-            children: [
-              Icon(
-                CupertinoIcons.person_fill,
-                color: AppColors.orange,
-                size: width * 0.009,
-              ),
-              SizedBox(width: width * 0.004),
-              MyTextPoppines(
-                text: name,
-                fontSize: width * 0.006,
-                color: AppColors.white.withOpacity(0.8),
-                fontWeight: FontWeight.w400,
-              ),
+          Row(children: [
+            Icon(
+              CupertinoIcons.person_fill,
+              color: AppColors.yellow,
+              size: width * 0.009,
+            ),
+            SizedBox(width: width * 0.004),
+            MyTextPoppines(
+              text: name,
+              fontSize: width * 0.006,
+              color: AppColors.white.withOpacity(0.8),
+              fontWeight: FontWeight.w400,
+            ),
+            if (this.width > 0.2) ...[
               SizedBox(width: width * 0.01),
               Icon(
                 CupertinoIcons.scope,
-                color: AppColors.orange,
+                color: AppColors.yellow,
                 size: width * 0.008,
               ),
               SizedBox(width: width * 0.004),
@@ -178,7 +180,26 @@ class ReviewCard2 extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
             ],
-          ),
+          ]),
+          if (this.width < 0.2) ...[
+            SizedBox(height: height * 0.012),
+            Row(
+              children: [
+                Icon(
+                  CupertinoIcons.scope,
+                  color: AppColors.yellow,
+                  size: width * 0.008,
+                ),
+                SizedBox(width: width * 0.004),
+                MyTextPoppines(
+                  text: designation,
+                  fontSize: width * 0.006,
+                  color: AppColors.white.withOpacity(0.8),
+                  fontWeight: FontWeight.w400,
+                ),
+              ],
+            )
+          ]
           // SizedBox(
           //   height: height * 0.008
           // ),

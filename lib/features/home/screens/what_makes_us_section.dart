@@ -14,21 +14,21 @@ class WhatMakesUsSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: height * 0.0),
         const ScrollingBrandsWidget(),
         SizedBox(height: height * 0.08),
         MyTextPoppines(
           text: "What makes us more than just an agency?",
-          fontSize: width * 0.015,
+          fontSize: width * 0.008,
           fontWeight: FontWeight.w500,
-          color: Colors.white,
+          color: AppColors.orange,
           height: 0,
         ),
-        MyTextPoppines(
-          text: "We don’t just develop—we Awaken, Elevate, and Evolve.",
-          fontSize: width * 0.028,
+        MyText(
+          text: "Awaken, Elevate, and Evolve.",
+          fontSize: width * 0.03,
           fontWeight: FontWeight.bold,
-          color: AppColors.orange,
+          color: AppColors.white,
+          googleFontFamily: "Plus Jakarta Sans",
           height: 0,
         ),
         SizedBox(height: height * 0.12),
@@ -69,7 +69,7 @@ class WhatMakesUsSection extends StatelessWidget {
                       "We're digital marketing scientists. Mixing metrics with memes & data with daring. The result? Pure magic!",
                   fontSize: width * 0.008,
                   textAlign: TextAlign.start,
-                  color: Colors.white,
+                  color: AppColors.white,
                 ),
               ),
             ),
@@ -84,28 +84,42 @@ class WhatMakesUsSection extends StatelessWidget {
             child: const Column(
               children: [
                 FAQItem(
-                  question:
-                      "Want to create awareness about your brand and reach the right audience?",
+                  question: "How do you approach a new project?",
                   answer:
-                      "We’re the kind of digital marketing agency that doesn’t just chase eyeballs. We chase the right eyeballs. Our social media marketing team crafts narratives that turn scrollers into stoppers, while our content team ensures they stick around. Because awareness without engagement is just expensive silence.",
+                      "Our process kicks off with an in-depth discovery phase where we analyze your business needs and goals. This allows us to tailor our app, web, UI/UX, and AI solutions so that every step—from research to the final launch—aligns with your vision.",
+                ),
+                FAQItem(
+                  question: "What types of projects do you specialize in?",
+                  answer:
+                      "We specialize in developing mobile apps, web platforms, and cutting-edge AI integrations, along with comprehensive UI/UX design. Whether you’re launching a new product or refining an existing service, we deliver solutions built to scale.",
+                ),
+                FAQItem(
+                  question: "How do you manage project timelines and quality?",
+                  answer:
+                      "We follow agile methodologies with regular sprints, reviews, and client feedback loops. This iterative process ensures projects meet deadlines while upholding strict quality standards at every development phase.",
+                ),
+                // FAQItem(
+                //   question:
+                //       "Can you integrate new features into our existing systems?",
+                //   answer:
+                //       "Absolutely. Our team has extensive expertise in integrating modern technologies, including AI, into legacy systems. We ensure smooth transitions without disrupting your ongoing operations.",
+                // ),
+                // FAQItem(
+                //   question:
+                //       "What support do you offer after the project is launched?",
+                //   answer:
+                //       "Our support doesn’t end at launch. We provide comprehensive post-launch services including ongoing maintenance, feature upgrades, technical support, and periodic consultations to keep your solution optimized and secure.",
+                // ),
+                FAQItem(
+                  question: "How do you price your projects?",
+                  answer:
+                      "Each project is unique, so we start with a detailed consultation to understand your requirements. From there, we offer a transparent pricing model that fits your budget and provides you with a clear scope of deliverables.",
                 ),
                 FAQItem(
                   question:
-                      "Everyone promises first-page rankings. What makes us different?",
+                      "What makes Wake Up Monster different from other agencies?",
                   answer:
-                      "We’re the kind of digital marketing agency that doesn’t just chase eyeballs. We chase the right eyeballs. Our social media marketing team crafts narratives that turn scrollers into stoppers, while our content team ensures they stick around. Because awareness without engagement is just expensive silence.",
-                ),
-                FAQItem(
-                  question:
-                      "Five specialised teams sound expensive. How do we justify the investment?",
-                  answer:
-                      "We’re the kind of digital marketing agency that doesn’t just chase eyeballs. We chase the right eyeballs. Our social media marketing team crafts narratives that turn scrollers into stoppers, while our content team ensures they stick around. Because awareness without engagement is just expensive silence.",
-                ),
-                FAQItem(
-                  question:
-                      "What if you need just one of our specialised services?",
-                  answer:
-                      "We’re the kind of digital marketing agency that doesn’t just chase eyeballs. We chase the right eyeballs. Our social media marketing team crafts narratives that turn scrollers into stoppers, while our content team ensures they stick around. Because awareness without engagement is just expensive silence.",
+                      "We combine deep technical expertise in app, web, UI/UX, and AI development with a client-centric approach. Our specialized micro-teams ensure every project gets focused attention and innovative solutions that drive real business growth.",
                 ),
               ],
             ),
@@ -114,7 +128,6 @@ class WhatMakesUsSection extends StatelessWidget {
         SizedBox(height: height * 0.08),
         // Scrolling Brands
         const ScrollingBrandsWidget2(),
-        SizedBox(height: height * 0.04),
       ],
     );
   }
@@ -143,11 +156,12 @@ class StatBox extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            MyTextPoppines(
+            MyText(
               text: number,
               fontSize: width * 0.042,
-              fontWeight: FontWeight.bold,
-              color: color,
+              fontWeight: FontWeight.w800,
+              color: AppColors.orange,
+              googleFontFamily: "Plus Jakarta Sans",
             ),
             SizedBox(width: width * 0.002),
             Align(
@@ -156,7 +170,7 @@ class StatBox extends StatelessWidget {
                 text: "+",
                 fontSize: width * 0.028,
                 fontWeight: FontWeight.w600,
-                color: color,
+                color: AppColors.orange,
               ),
             ),
           ],
@@ -204,7 +218,7 @@ class FAQItem extends StatelessWidget {
             ? [
                 Container(
                   padding: const EdgeInsets.all(16),
-                  color: Colors.deepPurple,
+                  color: AppColors.white.withOpacity(0.14),
                   child: MyTextPoppines(
                     text: answer!,
                     fontSize: 14,

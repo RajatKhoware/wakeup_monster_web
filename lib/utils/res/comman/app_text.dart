@@ -8,7 +8,14 @@ class AppText {
   static const String philosophy = "Philosophy";
   static const String insights = "Insights";
   static const String contactUs = "CONTACT US";
-  static const String innovateWithUs = "YOU (U) INNOVATE (INNO) WITH US";
+  static const String innovateWithUs =
+      "WE DON'T SLEEP ON IDEAS. WE WAKE THEM UP";
+  //YOU (U) WAKE UP THE MONSTER WITH US;
+  //UNLEASH THE MONSTER WITHIN YOUR BRAND
+  // WE WAKE BRANDS INTO BEASTS
+  // WAKE UP. STAND OUT. GO MONSTER.
+  // WE DON'T SLEEP ON IDEAS. WE WAKE THEM UP.
+  // YOU DREAM. WE WAKE. TOGETHER, WE BUILD.
   static const String webMobileAI = "WEB, MOBILE & AI/ML\nDEVELOPMENT AGENCY";
   static const String homesubHeadline =
       "We are a team of engineering connoisseurs, AI and ML specialists, and visionary technology consultants dedicated to addressing unique challenges for forward-thinking startups, inventive SMBs, and purpose-driven organizations.";

@@ -1,10 +1,15 @@
+import 'dart:typed_data';
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:wakeup_web/features/about%20us/screen/about_us.dart';
 import 'package:wakeup_web/features/client%20review/screen/client_review_section.dart';
 import 'package:wakeup_web/features/contactus%20form/screen/contact_us_setion.dart';
 import 'package:wakeup_web/features/home/screens/home_screen.dart';
+import 'package:wakeup_web/features/home/screens/what_makes_us_section.dart';
 import 'package:wakeup_web/features/our%20services/widget/build_services_colunm.dart';
 import 'package:wakeup_web/features/why%20choose%20us/screen/why_choose_us_section.dart';
 import 'package:wakeup_web/my%20web/controller/my_web_controller.dart';
@@ -15,36 +20,89 @@ import '../utils/res/comman/app_colors.dart';
 import '../features/home/widgets/home_appbar.dart';
 import '../features/our services/screens/our_services_screen.dart';
 import '../features/we help/screen/we_help_section.dart';
+import 'dart:html' as html;
 
-class MyWeb extends StatelessWidget {
+// Create a GlobalKey to access the RepaintBoundary's state.
+
+class MyWeb extends StatefulWidget {
   MyWeb({super.key});
 
+  @override
+  State<MyWeb> createState() => _MyWebState();
+}
+
+class _MyWebState extends State<MyWeb> {
   final MyWebController controller = Get.put(MyWebController());
+  final GlobalKey _globalKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+
     return Scaffold(
       backgroundColor: AppColors.blackBg,
       appBar: PreferredSize(
         preferredSize: Size(width, 80),
         child: const HomeAppBar(),
       ),
-      body: SingleChildScrollView(
-        controller: controller.scrollController,
-        child: const Column(
-          children: [
-            // HomePage(),
-            // OurServices(),
-            //  ClientReviewSection(),
-            // WhyChooseUsSection(),
-            // ContactUsSection(),
-            AboutUsSection()
-          ],
+      body: RepaintBoundary(
+        key: _globalKey,
+        child: SingleChildScrollView(
+          controller: controller.scrollController,
+          child: const Column(
+            children: [
+              HomePage(),
+              WhatMakesUsSection(),
+              OurServices(),
+              ClientReviewSection(),
+              WhyChooseUsSection(),
+              ContactUsSection(),
+              AboutUsSection()
+            ],
+          ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _captureScreenshot,
+        child: Icon(Icons.camera_alt),
+      ),
     );
+  }
+
+  Future<void> _captureScreenshot() async {
+    try {
+      // Find the RenderRepaintBoundary from the key.
+      RenderRepaintBoundary boundary = _globalKey.currentContext!
+          .findRenderObject() as RenderRepaintBoundary;
+      // Increase the pixel ratio as needed (3.0 is a common choice for high quality).
+      final image = await boundary.toImage(pixelRatio: 3.0);
+      final byteData = await image.toByteData(format: ImageByteFormat.png);
+      final pngBytes = byteData?.buffer.asUint8List();
+
+      // pngBytes now contains your PNG image data.
+      // Here you can save it, upload it, or display it in an Image widget.
+      // For example, you could save it to a file or use a package like `image_gallery_saver`.
+
+      print('Screenshot captured successfully, bytes: ${pngBytes?.length}');
+      downloadScreenshot(pngBytes!);
+    } catch (e) {
+      print('Error capturing screenshot: $e');
+    }
+  }
+
+  void downloadScreenshot(Uint8List screenshotBytes) {
+    try {
+      final blob = html.Blob([screenshotBytes], 'image/png');
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      final anchor = html.AnchorElement(href: url)
+        ..setAttribute("download", "screenshot.png")
+        ..click();
+      html.Url.revokeObjectUrl(url);
+      print("Saved ------");
+    } catch (e) {
+      print('Error capturing screenshot: $e');
+    }
   }
 }
 

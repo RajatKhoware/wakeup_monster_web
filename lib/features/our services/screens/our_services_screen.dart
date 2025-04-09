@@ -423,7 +423,7 @@ class OurServices extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: height * 0.03),
+          SizedBox(height: height * 0.07),
           SizedBox(
             width: width * 0.4,
             child: MyTextPoppines(
@@ -484,7 +484,7 @@ class OurServices extends StatelessWidget {
                                     child: Text(
                                       service.title,
                                       style: cardHoverController.isHovered.value
-                                          ? GoogleFonts.poppins(
+                                          ? GoogleFonts.syne(
                                               fontSize: 32,
                                               fontWeight: FontWeight.bold,
                                               foreground: Paint()
@@ -492,7 +492,7 @@ class OurServices extends StatelessWidget {
                                                 ..strokeWidth = 1.2
                                                 ..color = AppColors.orange,
                                             )
-                                          : GoogleFonts.poppins(
+                                          : GoogleFonts.syne(
                                               fontSize: width * 0.016,
                                               color: AppColors.white,
                                               fontWeight: FontWeight.bold,
@@ -562,7 +562,7 @@ class OurServices extends StatelessWidget {
                                                           size: width * 0.01,
                                                         ),
                                                       )
-                                                    : MyTextPoppines(
+                                                    : MyTextSyne(
                                                         text: "View More",
                                                         fontSize:
                                                             width * 0.0065,
@@ -623,10 +623,10 @@ class OurServices extends StatelessWidget {
           Container(
             width: width * 0.0018,
             height: height * 0.02,
-            color: isHovered ? AppColors.orange : Colors.orangeAccent,
+            color: isHovered ? AppColors.orange : AppColors.yellow,
           ),
           SizedBox(width: width * 0.004),
-          MyTextPoppines(
+          MyTextSyne(
             text: text,
             fontSize: width * 0.0085,
             fontWeight: FontWeight.w600,
