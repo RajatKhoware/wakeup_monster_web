@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wakeup_web/my%20web/controller/my_web_controller.dart';
+import 'package:wakeup_web/utils/componets/buttons/stack_buttomn.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
 import 'package:get/get.dart';
 
@@ -329,6 +331,7 @@ class OurServices extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    // final webController = Get.find<MyWebController>();
 
     final services = [
       ServiceModel(
@@ -415,7 +418,6 @@ class OurServices extends StatelessWidget {
 
     final hoverControllers =
         List.generate(services.length, (index) => OurServicesController()).obs;
-
     return Container(
       width: width,
       padding: EdgeInsets.symmetric(vertical: height * 0.06),
@@ -606,6 +608,11 @@ class OurServices extends StatelessWidget {
             ),
           ),
           SizedBox(height: height * 0.04),
+          StackButton(
+            text: "CONTACT US",
+            onTap: () => MyWebController.instance.scrollToBottom(),
+          ),
+          SizedBox(height: height * 0.06),
           const WeHelpSection(),
         ],
       ),

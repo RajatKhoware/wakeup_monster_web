@@ -19,7 +19,7 @@ class AppText {
   static const String webMobileAI = "WEB, MOBILE & AI/ML\nDEVELOPMENT AGENCY";
   static const String homesubHeadline =
       "We are a team of engineering connoisseurs, AI and ML specialists, and visionary technology consultants dedicated to addressing unique challenges for forward-thinking startups, inventive SMBs, and purpose-driven organizations.";
-  static const String talkBusiness = "LET'S TALK BUSINESS";
+  static const String talkBusiness = "GET A FREE CONSULTATION";
   static const String businessTestimonial =
       "Their communicative, organized, and proactive approach ensures a smooth collaboration. Overall, their flexibility and adaptability complement their technical expertise.";
   static const String takeALookAt = "TAKE A LOOK AT";
@@ -127,7 +127,7 @@ class AppText {
 
   // About us
   static const aboutCompany =
-      "Wakeup Monsters is a product development agency compiled of engineers and technology experts with an ownership mindset who are solely focused on solving business challenges via creating future-ready apps, websites, and digital solutions.";
+      "Wakeup Monster is a product development agency compiled of engineers and technology experts with an ownership mindset who are solely focused on solving business challenges via creating future-ready apps, websites, and digital solutions.";
   static const aboutcontacts =
       "+91 77249-86116 \nwakeup.mosters@gmail.com \nwww.wakeupmoster.com";
 }

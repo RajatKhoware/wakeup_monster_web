@@ -1,9 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:wakeup_web/features/our%20services/widget/services_card.dart';
+import 'package:wakeup_web/my%20web/controller/my_web_controller.dart';
+import 'package:wakeup_web/utils/componets/buttons/stack_buttomn.dart';
 import 'package:wakeup_web/utils/res/comman/app_images.dart';
-import 'package:wakeup_web/utils/res/comman/app_text.dart';
-import 'package:wakeup_web/utils/res/helper/my_custom_painter.dart';
 
 import '../../../utils/res/comman/app_colors.dart';
 import '../../../utils/res/my_text.dart';
@@ -56,36 +54,6 @@ class ClientReviewSection extends StatelessWidget {
         //     fontSize: width * 0.008,
         //     color: AppColors.orange,
         //     fontWeight: FontWeight.w600,
-        //   ),
-        // ),
-        // Align(
-        //   alignment: Alignment.center,
-        //   child: MyTextPoppines(
-        //     text: "WHY CLIENTS LOVE US",
-        //     // fontSize: width * 0.03,
-        //     // color: AppColors.white,
-        //     // letterSpacing: -2,
-        //     // fontWeight: FontWeight.bold,
-        //     // maxLines: 3,
-        //     // height: 1.1,
-        //     // textAlign: TextAlign.center,
-        //     fontSize: width * 0.04,
-        //     fontWeight: FontWeight.bold,
-        //     color: AppColors.lightGreen,
-        //     letterSpacing: -5,
-        //     height: 0,
-        //   ),
-        // ),
-
-        // Align(
-        //   alignment: Alignment.center,
-        //   child: MyTextPoppines(
-        //     text:
-        //         "Don’t take a word for it. See what our partners have to say about us",
-        //     fontSize: width * 0.008,
-        //     color: AppColors.white.withOpacity(0.6),
-        //     //     color: AppColors.white,
-        //     fontWeight: FontWeight.w400,
         //   ),
         // ),
         //  SizedBox(height: height * 0.08),
@@ -178,7 +146,7 @@ class ClientReviewSection extends StatelessWidget {
           ],
         ),
 
-        SizedBox(height: height * 0.04),
+        SizedBox(height: height * 0.06),
         Container(
           width: width,
           decoration: BoxDecoration(color: AppColors.white.withOpacity(0.12)),
@@ -230,21 +198,25 @@ class ClientReviewSection extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: height * 0.016),
-                  Container(
-                    color: AppColors.orange,
-                    padding: EdgeInsets.symmetric(
-                      vertical: height * 0.016,
-                      horizontal: width * 0.02,
-                    ),
-                    child: MyText(
-                      text: "LET'S TALK",
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                      fontSize: width * 0.008,
-                      googleFontFamily: "Plus Jakarta Sans",
-                      textAlign: TextAlign.start,
-                    ),
-                  )
+                  StackButton(
+                    text: "LET'S TALK",
+                    onTap: () => MyWebController.instance.scrollToBottom(),
+                  ),
+                  // Container(
+                  //   color: AppColors.orange,
+                  //   padding: EdgeInsets.symmetric(
+                  //     vertical: height * 0.016,
+                  //     horizontal: width * 0.02,
+                  //   ),
+                  //   child: MyText(
+                  //     text: "LET'S TALK",
+                  //     color: Colors.white,
+                  //     fontWeight: FontWeight.w800,
+                  //     fontSize: width * 0.008,
+                  //     googleFontFamily: "Plus Jakarta Sans",
+                  //     textAlign: TextAlign.start,
+                  //   ),
+                  // )
                 ],
               ),
             ],

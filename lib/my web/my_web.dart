@@ -63,10 +63,10 @@ class _MyWebState extends State<MyWeb> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _captureScreenshot,
-        child: Icon(Icons.camera_alt),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _captureScreenshot,
+      //   child: Icon(Icons.camera_alt),
+      // ),
     );
   }
 

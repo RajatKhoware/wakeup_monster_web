@@ -38,7 +38,6 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   fontSize: width * 0.008,
                 ),
-                SizedBox(height: height * 0.01),
                 HomeBanner(width: width, height: height), // Banner + Headlines
                 SizedBox(height: height * 0.015),
                 SizedBox(
@@ -277,20 +276,22 @@ class _LetsTalkState extends State<LetsTalk> {
           onTap: () => controller.scrollToBottom(),
           child: Column(
             children: [
-              MyTextPoppines(
-                text: AppText.talkBusiness,
-                color: isHover ? AppColors.orange : AppColors.lightGreen,
-                fontWeight: FontWeight.w700,
-                fontSize: width * 0.009,
-                textAlign: TextAlign.center,
-              ),
-              Visibility(
-                child: Container(
-                  width: width * 0.092,
-                  height: height * 0.0018,
-                  color: isHover ? AppColors.orange : AppColors.lightGreen,
+              Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(
+                    color: isHover ? AppColors.orange : AppColors.lightGreen,
+                    width: 2,
+                  )),
                 ),
-              )
+                child: MyTextPoppines(
+                  text: AppText.talkBusiness,
+                  color: isHover ? AppColors.orange : AppColors.lightGreen,
+                  fontWeight: FontWeight.w600,
+                  fontSize: width * 0.009,
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ],
           ),
         ),

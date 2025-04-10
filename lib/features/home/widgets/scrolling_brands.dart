@@ -10,19 +10,9 @@ class ScrollingBrandsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // This strip scrolls left (content moves left)
-        ScrollingStrip(
-          scrollLeft: true,
-          backgroundColor: AppColors.transparent,
-        ),
-        // This strip scrolls right (content moves right)
-        // ScrollingStrip(
-        //   scrollLeft: false,
-        //   backgroundColor: AppColors.transparent,
-        // ),
-      ],
+    return const ScrollingStrip(
+      scrollLeft: true,
+      backgroundColor: AppColors.transparent,
     );
   }
 }
@@ -32,13 +22,9 @@ class ScrollingBrandsWidget2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ScrollingStrip(
-          scrollLeft: false,
-          backgroundColor: AppColors.transparent,
-        ),
-      ],
+    return const ScrollingStrip(
+      scrollLeft: false,
+      backgroundColor: AppColors.transparent,
     );
   }
 }
@@ -57,7 +43,7 @@ class ScrollingStripController extends GetxController {
   }
 
   void _startScrolling() {
-    _timer = Timer.periodic(const Duration(milliseconds: 40), (_) {
+    _timer = Timer.periodic(const Duration(milliseconds: 30), (_) {
       if (scrollController.hasClients) {
         final offset = scrollController.offset + step;
         final maxScroll = scrollController.position.maxScrollExtent;
@@ -157,22 +143,38 @@ class ScrollingStrip extends StatelessWidget {
   Widget _buildImageRow(bool isHovered) {
     // Replace these asset paths with your actual brand logo paths
     final List<String> imagePaths = [
-      'assets/logo/brand1.png',
-      'assets/logo/brand.png',
-      'assets/logo/brand3.png',
-      'assets/logo/brand4.png',
-      'assets/logo/brand1.png',
-      'assets/logo/brand.png',
-      'assets/logo/brand3.png',
-      'assets/logo/brand4.png',
-      'assets/logo/brand1.png',
-      'assets/logo/brand.png',
-      'assets/logo/brand3.png',
-      'assets/logo/brand4.png',
-      'assets/logo/brand1.png',
-      'assets/logo/brand.png',
-      'assets/logo/brand3.png',
-      'assets/logo/brand4.png',
+      'assets/logo/1.png',
+      'assets/logo/2.png',
+      'assets/logo/3.png',
+      'assets/logo/4.png',
+      'assets/logo/5.png',
+      'assets/logo/6.png',
+      'assets/logo/7.png',
+      'assets/logo/8.png',
+      'assets/logo/1.png',
+      'assets/logo/2.png',
+      'assets/logo/3.png',
+      'assets/logo/4.png',
+      'assets/logo/5.png',
+      'assets/logo/6.png',
+      'assets/logo/7.png',
+      'assets/logo/8.png',
+      'assets/logo/1.png',
+      'assets/logo/2.png',
+      'assets/logo/3.png',
+      'assets/logo/4.png',
+      'assets/logo/5.png',
+      'assets/logo/6.png',
+      'assets/logo/7.png',
+      'assets/logo/8.png',
+      'assets/logo/1.png',
+      'assets/logo/2.png',
+      'assets/logo/3.png',
+      'assets/logo/4.png',
+      'assets/logo/5.png',
+      'assets/logo/6.png',
+      'assets/logo/7.png',
+      'assets/logo/8.png',
     ];
 
     // Duplicate the content in a single row for seamless looping.
@@ -193,8 +195,7 @@ class ScrollingStrip extends StatelessWidget {
   Widget _buildBrandImage(String imagePath, bool isHovered) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      //  padding: EdgeInsets.all(isHovered ? 8 : 0),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         // border: isHovered ? Border.all(color: Colors.orange, width: 2) : null,
         borderRadius: BorderRadius.circular(8),
@@ -207,276 +208,3 @@ class ScrollingStrip extends StatelessWidget {
     );
   }
 }
-
-// import 'dart:async';
-// import 'package:flutter/material.dart';
-
-// void main() => runApp(const ScrollingBrandsW());
-
-// class ScrollingBrandsW extends StatelessWidget {
-//   const ScrollingBrandsW({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(title: const Text('Two-Way Smooth Scrolling Text')),
-//         body: Column(
-//           children: const [
-//             ScrollingText2(
-//               isRight: true,
-//               direction: AxisDirection.right, // Scroll to the right
-//               backgroundColor:
-//                   Colors.yellow, // Background color for first strip
-//             ),
-//             ScrollingText(
-//               isRight: false,
-//               direction: AxisDirection.left, // Scroll to the left
-//               backgroundColor:
-//                   Colors.green, // Background color for second strip
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class ScrollingText2 extends StatefulWidget {
-//   final bool isRight;
-//   final AxisDirection direction;
-//   final Color backgroundColor;
-//   const ScrollingText2(
-//       {super.key,
-//       required this.direction,
-//       required this.backgroundColor,
-//       required this.isRight});
-//   @override
-//   State<ScrollingText2> createState() => _ScrollingText2State();
-// }
-
-// class _ScrollingText2State extends State<ScrollingText2> {
-//   final ScrollController _scrollController = ScrollController();
-//   late Timer _timer;
-//   bool _isHovered = false; // Shared hover state
-//   late double step; // Scroll step for smooth movement
-//   @override
-//   void initState() {
-//     super.initState();
-//     WidgetsBinding.instance.addPostFrameCallback((_) {
-//       step = -2.0;
-//       //print(step);
-//       _startScrolling();
-//     });
-//   }
-
-//   void _startScrolling() {
-//     const duration =
-//         Duration(milliseconds: 16); // 60 FPS animation (16ms/frame)
-//     _timer = Timer.periodic(duration, (_) {
-//       if (_scrollController.hasClients) {
-//         final maxScrollExtent = _scrollController.position.maxScrollExtent;
-//         final minScrollExtent = _scrollController.position.minScrollExtent;
-//         final offset = _scrollController.offset + step;
-//         if (offset >= maxScrollExtent) {
-//           // Reset to the start seamlessly
-//           _scrollController.jumpTo(minScrollExtent);
-//         } else if (offset <= minScrollExtent) {
-//           // Reset to the end seamlessly
-//           _scrollController.jumpTo(maxScrollExtent);
-//         } else {
-//           _scrollController.jumpTo(offset);
-//         }
-//       }
-//     });
-//   }
-
-//   @override
-//   void dispose() {
-//     _timer.cancel();
-//     _scrollController.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 100,
-//       color: widget.backgroundColor, // Set the background color for each strip
-//       child: MouseRegion(
-//         onEnter: (_) {
-//           setState(() {
-//             _isHovered = true;
-//           });
-//         },
-//         onExit: (_) {
-//           setState(() {
-//             _isHovered = false;
-//           });
-//         },
-//         child: ListView(
-//           controller: _scrollController,
-//           scrollDirection: Axis.horizontal,
-//           physics: const NeverScrollableScrollPhysics(),
-//           reverse: widget.direction ==
-//               AxisDirection.left, // Reverse direction for left scrolling
-//           children: [
-//             _buildScrollingContent(),
-//             _buildScrollingContent(), // Duplicate for seamless looping
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   Widget _buildScrollingContent() {
-//     final List<String> texts = [
-//       '360 Product Spins * Invisible Mannequins * Stop Motion *',
-//       'Flat Lay * Augmented Reality * Still Life *',
-//       '3D-AR * Invisible Mannequins * Still Life *',
-//     ];
-//     return Row(
-//       children: texts.map((text) => _buildHoverText(text)).toList(),
-//     );
-//   }
-
-//   Widget _buildHoverText(String text) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-//       child: Text(
-//         text,
-//         style: TextStyle(
-//           fontSize: 24,
-//           fontWeight: FontWeight.bold,
-//           foreground: _isHovered
-//               ? (Paint()
-//                 ..style = PaintingStyle.stroke
-//                 ..strokeWidth = 0.5
-//                 ..color = Colors.black) // Border on hover
-//               : null, // Normal text style
-//           color: _isHovered ? null : Colors.black, // Ensure no conflict
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class ScrollingText extends StatefulWidget {
-//   final bool isRight;
-//   final AxisDirection direction;
-//   final Color backgroundColor;
-//   const ScrollingText(
-//       {super.key,
-//       required this.direction,
-//       required this.backgroundColor,
-//       required this.isRight});
-//   @override
-//   State<ScrollingText> createState() => _ScrollingTextState();
-// }
-
-// class _ScrollingTextState extends State<ScrollingText> {
-//   final ScrollController _scrollController = ScrollController();
-//   late Timer _timer;
-//   bool _isHovered = false; // Shared hover state
-//   late double step; // Scroll step for smooth movement
-//   @override
-//   void initState() {
-//     super.initState();
-//     WidgetsBinding.instance.addPostFrameCallback((_) {
-//       print("---------------");
-//       print(widget.isRight);
-//       step = widget.isRight ? 2.0 : -2.0;
-//       //print(step);
-//       _startScrolling();
-//     });
-//   }
-
-//   void _startScrolling() {
-//     const duration =
-//         Duration(milliseconds: 16); // 60 FPS animation (16ms/frame)
-//     _timer = Timer.periodic(duration, (_) {
-//       if (_scrollController.hasClients) {
-//         final maxScrollExtent = _scrollController.position.maxScrollExtent;
-//         final minScrollExtent = _scrollController.position.minScrollExtent;
-//         final offset = _scrollController.offset + step;
-//         if (offset >= maxScrollExtent) {
-//           // Reset to the start seamlessly
-//           _scrollController.jumpTo(minScrollExtent);
-//         } else if (offset <= minScrollExtent) {
-//           // Reset to the end seamlessly
-//           _scrollController.jumpTo(maxScrollExtent);
-//         } else {
-//           _scrollController.jumpTo(offset);
-//         }
-//       }
-//     });
-//   }
-
-//   @override
-//   void dispose() {
-//     _timer.cancel();
-//     _scrollController.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 100,
-//       color: widget.backgroundColor, // Set the background color for each strip
-//       child: MouseRegion(
-//         onEnter: (_) {
-//           setState(() {
-//             _isHovered = true;
-//           });
-//         },
-//         onExit: (_) {
-//           setState(() {
-//             _isHovered = false;
-//           });
-//         },
-//         child: ListView(
-//           controller: _scrollController,
-//           scrollDirection: Axis.horizontal,
-//           physics: const NeverScrollableScrollPhysics(),
-//           reverse: widget.direction ==
-//               AxisDirection.left, // Reverse direction for left scrolling
-//           children: [
-//             _buildScrollingContent(),
-//             _buildScrollingContent(), // Duplicate for seamless looping
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   Widget _buildScrollingContent() {
-//     final List<String> texts = [
-//       '360 Product Spins * Invisible Mannequins * Stop Motion *',
-//       'Flat Lay * Augmented Reality * Still Life *',
-//       '3D-AR * Invisible Mannequins * Still Life *',
-//     ];
-//     return Row(
-//       children: texts.map((text) => _buildHoverText(text)).toList(),
-//     );
-//   }
-
-//   Widget _buildHoverText(String text) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-//       child: Text(
-//         text,
-//         style: TextStyle(
-//           fontSize: 24,
-//           fontWeight: FontWeight.bold,
-//           foreground: _isHovered
-//               ? (Paint()
-//                 ..style = PaintingStyle.stroke
-//                 ..strokeWidth = 0.5
-//                 ..color = Colors.black) // Border on hover
-//               : null, // Normal text style
-//           color: _isHovered ? null : Colors.black, // Ensure no conflict
-//         ),
-//       ),
-//     );
-//   }
-// }
