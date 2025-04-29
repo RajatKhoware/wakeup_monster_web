@@ -1,3 +1,4 @@
+import 'package:wakeup_web/features/our%20services/models/our_service_model.dart';
 import 'package:wakeup_web/features/our%20services/models/service_model.dart';
 
 class AppList {
@@ -133,66 +134,91 @@ class AppList {
     ),
   ];
 
-  // static List<AppTestimonial> appTestimonial = [
-  //   AppTestimonial(
-  //     "John Doe",
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
-  //     "CEO",
+  // static List<OurServiceModel> services = [
+  //   OurServiceModel(
+  //     title: "Design & Creative.",
+  //     subPoints: [
+  //       "UI/UX Design",
+  //       "Web Design",
+  //       "Print Design",
+  //       "Digital Design",
+  //     ],
+  //     onTap: () {},
   //   ),
-  //   AppTestimonial(
-  //     "Jane Smith",
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
-  //     "CTO",
+  //   OurServiceModel(
+  //     title: "Branding.",
+  //     subPoints: [
+  //       "Logo",
+  //       "Brand Guide",
+  //       "Memorable Brand Design Strategy",
+  //       "Social Identity",
+  //     ],
+  //     onTap: () {},
   //   ),
-  //   AppTestimonial(
-  //     "Mark Johnson",
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
-  //     "CFO",
+  //   OurServiceModel(
+  //     title: "Web Development.",
+  //     subPoints: [
+  //       "Frontend Development",
+  //       "Backend Development",
+  //       "API Integration",
+  //       "Responsive Design",
+  //     ],
+  //     onTap: () {},
   //   ),
-  //   AppTestimonial(
-  //     "Sara Davis",
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
-  //     "COO",
+  //   OurServiceModel(
+  //     title: "App Development.",
+  //     subPoints: [
+  //       "iOS App Development",
+  //       "Android App Development",
+  //       "Cross-Platform Solutions",
+  //       "App Store Deployment",
+  //     ],
+  //     onTap: () {},
   //   ),
-  //   AppTestimonial(
-  //     "Michael Brown",
-  //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod magna vel tellus efficitur, vitae commodo nulla tristique. Nulla facilisi.",
-  //     "CIO",
+  //   OurServiceModel(
+  //     title: "Growth Marketing.",
+  //     subPoints: [
+  //       "Content Marketing",
+  //       "Email Marketing",
+  //       "Search Engine Optimization",
+  //       "Pay-Per-Click",
+  //     ],
+  //     onTap: () {},
+  //   ),
+  //   OurServiceModel(
+  //     title: "Social Marketing.",
+  //     subPoints: [
+  //       "Social Media Strategy",
+  //       "Social Media Advertising",
+  //       "Social Media Management",
+  //       "Influencer Marketing",
+  //     ],
+  //     onTap: () {},
+  //   ),
+  //   OurServiceModel(
+  //     title: "Performance Marketing.",
+  //     subPoints: [
+  //       "Conversion Rate Optimization",
+  //       "Affiliate Marketing",
+  //       "Search Engine Marketing",
+  //       "Retargeting",
+  //     ],
+  //     onTap: () {},
+  //   ),
+  //   OurServiceModel(
+  //     title: "Photography & Videography.",
+  //     subPoints: [
+  //       "Product Photography",
+  //       "Portrait Photography",
+  //       "Wedding Photography",
+  //       "Event Photography",
+  //     ],
+  //     onTap: () {},
   //   ),
   // ];
 
-  static List<ServiceModel> services = [
-    ServiceModel(
-      title: "Design & Creative.",
-      subPoints: [
-        "UI/UX Design",
-        "Web Design",
-        "Print Design",
-        "Digital Design",
-      ],
-      onTap: () {},
-    ),
-    ServiceModel(
-      title: "Branding.",
-      subPoints: [
-        "Logo",
-        "Brand Guide",
-        "Memorable Brand Design Strategy",
-        "Social Identity",
-      ],
-      onTap: () {},
-    ),
-    ServiceModel(
-      title: "Web Development.",
-      subPoints: [
-        "Frontend Development",
-        "Backend Development",
-        "API Integration",
-        "Responsive Design",
-      ],
-      onTap: () {},
-    ),
-    ServiceModel(
+  static List services = [
+    OurServiceModel(
       title: "App Development.",
       subPoints: [
         "iOS App Development",
@@ -202,7 +228,57 @@ class AppList {
       ],
       onTap: () {},
     ),
-    ServiceModel(
+    OurServiceModel(
+      title: "Web Development.",
+      subPoints: [
+        "Frontend Development",
+        "Backend Development",
+        "Responsive Design",
+        "CMS Development (WordPress, Headless CMS)",
+      ],
+      onTap: () {},
+    ),
+    OurServiceModel(
+      title: "AI & Automation.",
+      subPoints: [
+        "Chatbot & Virtual Assistants",
+        "AI-powered Recommendation Systems",
+        "Data Analysis & Prediction",
+        "Custom AI Model Integration",
+      ],
+      onTap: () {},
+    ),
+    OurServiceModel(
+      title: "UI/UX Design.",
+      subPoints: [
+        "Wireframing & Prototyping",
+        "User Research & Journey Mapping",
+        "Mobile App UI Design",
+        "Web UI Design",
+      ],
+      onTap: () {},
+    ),
+    OurServiceModel(
+      title: "Branding.",
+      subPoints: [
+        "Logo Design",
+        "Brand Identity & Strategy",
+        "Brand Guidelines",
+        "Social Identity Design",
+      ],
+      onTap: () {},
+    ),
+    OurServiceModel(
+      title: "Digital Marketing.",
+      subPoints: [
+        "SEO",
+        "Performance Marketing (Google & Meta Ads)",
+        "Email Marketing",
+        "Social Media Advertising",
+      ],
+      onTap: () {},
+    ),
+    OurServiceModel(
       title: "Growth Marketing.",
       subPoints: [
         "Content Marketing",
@@ -212,33 +288,13 @@ class AppList {
       ],
       onTap: () {},
     ),
-    ServiceModel(
+    OurServiceModel(
       title: "Social Marketing.",
       subPoints: [
         "Social Media Strategy",
         "Social Media Advertising",
         "Social Media Management",
         "Influencer Marketing",
-      ],
-      onTap: () {},
-    ),
-    ServiceModel(
-      title: "Performance Marketing.",
-      subPoints: [
-        "Conversion Rate Optimization",
-        "Affiliate Marketing",
-        "Search Engine Marketing",
-        "Retargeting",
-      ],
-      onTap: () {},
-    ),
-    ServiceModel(
-      title: "Photography & Videography.",
-      subPoints: [
-        "Product Photography",
-        "Portrait Photography",
-        "Wedding Photography",
-        "Event Photography",
       ],
       onTap: () {},
     ),

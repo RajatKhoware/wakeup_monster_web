@@ -77,6 +77,7 @@ class SelectablePoppines extends StatelessWidget {
   Widget build(BuildContext context) {
     final heights = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+
     return SelectableText(
       text,
       style: GoogleFonts.poppins(
@@ -89,6 +90,10 @@ class SelectablePoppines extends StatelessWidget {
       ),
       textAlign: textAlign,
       maxLines: maxLines ?? 2,
+      textHeightBehavior: TextHeightBehavior(
+        applyHeightToFirstAscent: false,
+        applyHeightToLastDescent: false,
+      ),
     );
   }
 }

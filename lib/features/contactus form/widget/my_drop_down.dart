@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wakeup_web/utils/constant/app_sizer.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
 
 import '../../../utils/res/my_text.dart';
@@ -50,14 +51,16 @@ class _MyDropdownFieldState extends State<MyDropdownField> {
           dropdownColor: AppColors.black10,
           style: TextStyle(
             color: AppColors.white,
-            fontSize: width * 0.008,
+            fontSize: AppSizer.font15,
+            //  fontSize: width * 0.008,
           ),
           items: widget.items.map((String item) {
             return DropdownMenuItem<String>(
               value: item,
               child: MyTextPoppines(
                 text: item,
-                fontSize: width * 0.007,
+                fontSize: AppSizer.font15,
+                //   fontSize: width * 0.007,
                 color: AppColors.white,
               ),
             );

@@ -55,56 +55,23 @@ class _MyWebState extends State<MyWeb> {
               HomePage(),
               WhatMakesUsSection(),
               OurServices(),
+              WeHelpSection(),
               ClientReviewSection(),
               WhyChooseUsSection(),
               ContactUsSection(),
-              AboutUsSection()
+              AboutUsSection(),
             ],
           ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _captureScreenshot,
-      //   child: Icon(Icons.camera_alt),
-      // ),
     );
   }
-
-  Future<void> _captureScreenshot() async {
-    try {
-      // Find the RenderRepaintBoundary from the key.
-      RenderRepaintBoundary boundary = _globalKey.currentContext!
-          .findRenderObject() as RenderRepaintBoundary;
-      // Increase the pixel ratio as needed (3.0 is a common choice for high quality).
-      final image = await boundary.toImage(pixelRatio: 3.0);
-      final byteData = await image.toByteData(format: ImageByteFormat.png);
-      final pngBytes = byteData?.buffer.asUint8List();
-
-      // pngBytes now contains your PNG image data.
-      // Here you can save it, upload it, or display it in an Image widget.
-      // For example, you could save it to a file or use a package like `image_gallery_saver`.
-
-      print('Screenshot captured successfully, bytes: ${pngBytes?.length}');
-      downloadScreenshot(pngBytes!);
-    } catch (e) {
-      print('Error capturing screenshot: $e');
-    }
-  }
-
-  void downloadScreenshot(Uint8List screenshotBytes) {
-    try {
-      final blob = html.Blob([screenshotBytes], 'image/png');
-      final url = html.Url.createObjectUrlFromBlob(blob);
-      final anchor = html.AnchorElement(href: url)
-        ..setAttribute("download", "screenshot.png")
-        ..click();
-      html.Url.revokeObjectUrl(url);
-      print("Saved ------");
-    } catch (e) {
-      print('Error capturing screenshot: $e');
-    }
-  }
 }
+
+// 381 8 710
+/// 1. Responsive app bar
+/// 2. Fix minor responsive issues
+/// 3. redirect all interaction to site under maintance
 
 ///////
 /*

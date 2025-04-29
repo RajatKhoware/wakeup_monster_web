@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wakeup_web/utils/constant/app_sizer.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
 import 'package:wakeup_web/utils/res/my_text.dart';
 
@@ -36,7 +37,8 @@ class MyTextFeild extends StatelessWidget {
           isPhoneField ?? false ? TextInputType.phone : TextInputType.text,
       style: TextStyle(
         color: AppColors.white,
-        fontSize: width * 0.008,
+        fontSize: AppSizer.font15,
+        //   fontSize: width * 0.008,
       ),
       decoration: InputDecoration(
         filled: true,
@@ -53,7 +55,9 @@ class MyTextFeild extends StatelessWidget {
         alignLabelWithHint: true, // Aligns label with the hint text
         label: MyTextPoppines(
           text: lableText,
-          fontSize: width * 0.007,
+          fontSize: AppSizer.font15,
+
+          //   fontSize: width * 0.007,
           textAlign: TextAlign.start,
           color: AppColors.white,
         ),

@@ -21,22 +21,29 @@ class _StackButtonState extends State<StackButton> {
     AppColors.yellow,
   ];
 
-  // How far each layer should slide away on hover.
-  final double offsetPerLayer = 6.0;
-
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    // How far each layer should slide away on hover.
 
+    bool isMobile = width <= 600;
+    bool isTab = width > 600 || width < 1271;
+    bool isWeb = width > 1270;
+
+    final double offsetPerLayer = isMobile
+        ? 3.5
+        : isTab
+            ? 4.5
+            : width * 0.0035;
     return MouseRegion(
       onEnter: (_) => setState(() => isHovered = true),
       onExit: (_) => setState(() => isHovered = false),
       child: InkWell(
         onTap: widget.onTap,
         child: SizedBox(
-          width: 200,
-          height: 50,
+          width: isMobile ? 140 : 170,
+          height: isMobile ? 30 : 40,
 
           // Allow overflow so the layers don't affect the overall button size
           child: Stack(
@@ -55,8 +62,8 @@ class _StackButtonState extends State<StackButton> {
                       ? -((layerColors.length - 1 - i) * offsetPerLayer)
                       : 0,
                   child: Container(
-                    width: 200,
-                    height: 50,
+                    width: isMobile ? 140 : 170,
+                    height: isMobile ? 30 : 40,
 
                     decoration: BoxDecoration(
                       color: layerColors[i],
@@ -67,7 +74,8 @@ class _StackButtonState extends State<StackButton> {
                     child: i == layerColors.length - 1
                         ? MyTextPoppines(
                             text: widget.text,
-                            fontSize: width * 0.0085,
+                            fontSize: isMobile ? 12 : 14,
+                            //    fontSize: width * 0.0085,
                             fontWeight: FontWeight.bold,
                             color: isHovered
                                 ? AppColors.black

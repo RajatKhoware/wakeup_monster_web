@@ -85,6 +85,8 @@ class ScrollingStrip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
+    final width = MediaQuery.sizeOf(context).width;
     // Use a unique tag for each instance to ensure a separate controller.
     final controller = Get.put(
       ScrollingStripController(scrollLeft: scrollLeft),
@@ -92,7 +94,7 @@ class ScrollingStrip extends StatelessWidget {
     );
 
     return Container(
-      height: 150,
+      height: height * 0.1,
       color: backgroundColor,
       child: MouseRegion(
         onEnter: (_) => controller.setHovered(true),
@@ -105,7 +107,7 @@ class ScrollingStrip extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             // Remove reverse property to let our controller manage direction.
             // children: [_buildTextRow(controller.isHovered)],
-            children: [_buildImageRow(controller.isHovered)],
+            children: [_buildImageRow(controller.isHovered, context)],
           ),
         ),
       ),
@@ -131,7 +133,6 @@ class ScrollingStrip extends StatelessWidget {
                 text: text,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                // Pass the hover flag if you use it to show stroke effects
                 stroke: isHovered,
               ),
             ),
@@ -140,7 +141,7 @@ class ScrollingStrip extends StatelessWidget {
     );
   }
 
-  Widget _buildImageRow(bool isHovered) {
+  Widget _buildImageRow(bool isHovered, BuildContext context) {
     // Replace these asset paths with your actual brand logo paths
     final List<String> imagePaths = [
       'assets/logo/1.png',
@@ -185,24 +186,27 @@ class ScrollingStrip extends StatelessWidget {
           .map(
             (imagePath) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: _buildBrandImage(imagePath, isHovered),
+              child: _buildBrandImage(imagePath, isHovered, context),
             ),
           )
           .toList(),
     );
   }
 
-  Widget _buildBrandImage(String imagePath, bool isHovered) {
+  Widget _buildBrandImage(
+      String imagePath, bool isHovered, BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
+    final width = MediaQuery.sizeOf(context).width;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      margin: const EdgeInsets.symmetric(horizontal: 20),
+      margin: EdgeInsets.symmetric(horizontal: width * 0.01),
       decoration: BoxDecoration(
         // border: isHovered ? Border.all(color: Colors.orange, width: 2) : null,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Image.asset(
         imagePath,
-        height: 100,
+        height: width * 0.07,
         fit: BoxFit.contain,
       ),
     );

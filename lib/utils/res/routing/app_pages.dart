@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:wakeup_web/features/maintaince/view/screen/site_under_maintaince.dart';
 import 'package:wakeup_web/main.dart';
 import 'package:wakeup_web/my%20web/my_web.dart';
 
@@ -13,6 +14,10 @@ class AppGoRouter {
       GoRoute(
         path: '/',
         builder: (context, state) => MyWeb(),
+      ),
+      GoRoute(
+        path: AppRoutes.siteUnderMaintaince,
+        builder: (context, state) => const SiteUnderMaintaince(),
       ),
     ],
   );

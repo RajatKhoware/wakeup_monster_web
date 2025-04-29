@@ -1,13 +1,13 @@
-import 'dart:ui';
+// import 'dart:ui';
 
-class ServiceModel {
-  final String title;
-  final List<String> subPoints;
-  final VoidCallback onTap;
+// class ServiceModel {
+//   final String title;
+//   final List<String> subPoints;
+//   final VoidCallback onTap;
 
-  ServiceModel({
-    required this.title,
-    required this.subPoints,
-    required this.onTap,
-  });
-}
+//   ServiceModel({
+//     required this.title,
+//     required this.subPoints,
+//     required this.onTap,
+//   });
+// }

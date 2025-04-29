@@ -13,4 +13,5 @@ abstract class AppRoutes {
   static const contactPage = '/contact';
   static const solutions = '/solutions';
   static const pricing = '/pricing';
+  static const siteUnderMaintaince = '/maintaince';
 }

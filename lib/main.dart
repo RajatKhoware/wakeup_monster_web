@@ -7,6 +7,7 @@ import 'package:wakeup_web/features/home/screens/home_screen.dart';
 import 'package:wakeup_web/my%20web/my_web.dart';
 
 import 'package:flutter/material.dart';
+import 'package:wakeup_web/utils/constant/app_sizer.dart';
 import 'package:wakeup_web/utils/res/routing/app_pages.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppRes.init(context);
     return ToastificationWrapper(
       child: MaterialApp.router(
         title: 'Wakeup Monster',
@@ -34,6 +36,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+// Todo 
+// 1. Redirection
+// 2. 
 
 // void main() => runApp(MyApp());
 
