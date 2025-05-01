@@ -25,7 +25,7 @@ class _AboutUsHoverTextState extends State<AboutUsHoverText> {
     bool isMobile = width < 600;
     bool isTab = width >= 600 && width < 1271;
     bool isWeb = width >= 1270;
-    return InkWell(
+    return GestureDetector(
       onTap: widget.onTap,
       child: MouseRegion(
         onEnter: (_) => setState(() => isHovered = true),

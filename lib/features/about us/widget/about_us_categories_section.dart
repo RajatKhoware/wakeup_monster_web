@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wakeup_web/features/about%20us/widget/about_hover_text.dart';
 import 'package:wakeup_web/utils/constant/app_sizer.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
 import 'package:wakeup_web/utils/res/my_text.dart';
+import 'package:wakeup_web/utils/res/routing/app_pages.dart';
 
 class AboutUsCategories extends StatelessWidget {
   final List list;
@@ -47,6 +49,7 @@ class AboutUsCategories extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: isMobile ? 4 : height * 0.004),
                 child: AboutUsHoverText(
                   text: list[index],
+                  onTap: () => context.push(AppRoutes.siteUnderMaintaince),
                   // fontSize: width * 0.007,
                   // fontWeight: FontWeight.w300,
                   color: AppColors.white,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wakeup_web/my%20web/controller/my_web_controller.dart';
+import 'package:wakeup_web/my%20web/my_web.dart';
 import 'package:wakeup_web/utils/res/comman/app_colors.dart';
 import 'package:wakeup_web/utils/res/comman/app_images.dart';
 import 'package:wakeup_web/utils/res/comman/app_text.dart';
@@ -17,8 +18,6 @@ class HomeAppBar extends StatefulWidget {
 }
 
 class _HomeAppBarState extends State<HomeAppBar> {
-  bool isDarkTheme = true;
-
   final List _isHovering = [
     false,
     false,
@@ -30,7 +29,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
   Widget build(BuildContext context) {
     // final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
-    Color appBarBgColor = isDarkTheme ? AppColors.blackBg : AppColors.white;
+    Color appBarBgColor = AppColors.blackBg;
 
     void tap() {
       context.push(AppRoutes.siteUnderMaintaince);
@@ -47,17 +46,20 @@ class _HomeAppBarState extends State<HomeAppBar> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
-              isDarkTheme ? AppImg.logo : AppImg.darkLogo,
+              AppImg.logo,
               width: isMobile ? 90 : width * 0.12,
             ),
-            if (isMobile) ...[
-              Icon(
-                Icons.menu,
-                size: 30,
-                color: AppColors.white,
+            if (isMobile || isTab) ...[
+              InkWell(
+                onTap: () => scaffoldKey.currentState?.openDrawer(),
+                child: Icon(
+                  Icons.menu,
+                  size: 30,
+                  color: AppColors.white,
+                ),
               ),
             ],
-            if (widget.showOptions ?? true && !isMobile) ...[
+            if (widget.showOptions ?? true && isWeb) ...[
               SizedBox(
                 width: width * 0.3,
                 child: Row(
@@ -144,7 +146,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
                 ),
               ),
             ],
-            if (!isMobile) SizedBox(width: width * 0.08)
+            if (isWeb) SizedBox(width: width * 0.08)
           ],
         ),
       ),

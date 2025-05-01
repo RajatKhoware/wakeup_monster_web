@@ -1,6 +1,6 @@
 # wakeup_web
 
-A new Flutter project.
+Wakeup Monster is a creative agency specializing in design, development, and digital marketing solutions..
 
 ## Getting Started
 

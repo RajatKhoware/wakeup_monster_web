@@ -16,6 +16,9 @@ class SiteUnderMaintaince extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    bool isMobile = width < 600;
+    bool isTab = width >= 600 && width < 1271;
+    bool isWeb = width >= 1270;
 
     return Scaffold(
       backgroundColor: AppColors.blackBg,
@@ -27,7 +30,7 @@ class SiteUnderMaintaince extends StatelessWidget {
         //  mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            height: height * 0.6,
+            height: isMobile ? height * 0.65 : height * 0.6,
             child: const Center(
               child: ScrollingStrip(
                 scrollLeft: true,
@@ -38,18 +41,22 @@ class SiteUnderMaintaince extends StatelessWidget {
           Expanded(
             child: Container(
               width: width,
+              padding: EdgeInsets.symmetric(horizontal: 40),
               color: AppColors.white,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: width * 0.03),
+                  SizedBox(height: isMobile ? 45 : width * 0.03),
                   MyTextPoppines(
                     text:
                         "Looks like the page your were looking for doesn’t exist.",
-                    fontSize: width * 0.017,
-                    fontWeight: FontWeight.w500,
+                    fontSize: isMobile ? 25 : 30,
+                    fontWeight: isMobile ? FontWeight.w300 : FontWeight.w500,
                     color: AppColors.black,
+                    textAlign: TextAlign.center,
+                    maxLines: 3,
                   ),
-                  SizedBox(height: width * 0.01),
+                  SizedBox(height: isMobile ? 30 : width * 0.01),
                   const GoToHomePage(),
                 ],
               ),
@@ -207,16 +214,21 @@ class ScrollingStrip extends StatelessWidget {
 
     final combined = [...texts, ...texts];
     final width = MediaQuery.sizeOf(context).width;
+    bool isMobile = width < 600;
+    bool isTab = width >= 600 && width < 1271;
+    bool isWeb = width >= 1270;
     return Row(
       children: combined
           .map(
             (text) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: MyTextPoppines(
+              child: MyText(
                 text: text,
                 color: AppColors.white,
-                fontSize: width * 0.06,
-                fontWeight: FontWeight.bold,
+                googleFontFamily: "Anton",
+                fontSize: isMobile ? 98 : 88,
+                //     fontSize: width * 0.06,
+                fontWeight: FontWeight.w500,
                 //stroke: isHovered,
               ),
             ),
@@ -260,11 +272,12 @@ class _GoToHomePageState extends State<GoToHomePage> {
                     width: 2,
                   )),
                 ),
-                child: MyTextPoppines(
-                  text: "GO TO HOME",
+                child: MyText(
+                  text: "Go to Homepage",
                   color: isHover ? AppColors.orange : AppColors.lightGreen,
-                  fontWeight: FontWeight.w600,
-                  fontSize: width * 0.012,
+                  fontWeight: FontWeight.w400,
+                  googleFontFamily: 'Anton',
+                  fontSize: 24,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -275,7 +288,7 @@ class _GoToHomePageState extends State<GoToHomePage> {
         Icon(
           Icons.arrow_outward,
           color: isHover ? AppColors.orange : AppColors.lightGreen,
-          size: width * 0.015,
+          size: 26,
         ),
       ],
     );
